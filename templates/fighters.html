@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fighters | TruBoxing</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/fighters.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+
+</head>
+<body>
+
+  <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruLogo" class="logo" />
+
+    <!-- Burger Icon (For mobile) -->
+  <i class="fas fa-bars burger" id="burger"></i>
+
+
+
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
+      <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
+      <li><a href="/merchandise">MERCHANDISE</a></li>
+      <li><a href="/sponsors">SPONSORS</a></li>
+      <li><a href="/contact">CONTACT US</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <!-- Page Title & Search Bar -->
+<!-- fighters.html -->
+<div class="fighters-header">
+  <h1>FIGHTERS</h1>
+
+  <form class="search-bar" method="GET" action="{{ url_for('fighters_page') }}">
+    <input type="text" id="searchInput" name="search" placeholder="Search for fighters..." value="{{ request.args.get('search', '') }}" />
+
+    <div class="icons">
+<i class="fas fa-search" onclick="this.closest('form').submit()"></i>
+      <select id="weightFilter" name="weight">
+        <option value="">All Weights</option>
+        <option value="Lightweight" {% if request.args.get('weight') == 'Lightweight' %}selected{% endif %}>Lightweight</option>
+        <option value="Middleweight" {% if request.args.get('weight') == 'Middleweight' %}selected{% endif %}>Middleweight</option>
+        <option value="Welterweight" {% if request.args.get('weight') == 'Welterweight' %}selected{% endif %}>Welterweight</option>
+        <option value="Light Heavyweight" {% if request.args.get('weight') == 'Light Heavyweight' %}selected{% endif %}>Light Heavyweight</option>
+      </select>
+    </div>
+  </form>
+</div>
+
+
+
+  <!-- Fighters Grid -->
+  <section class="fighters-grid">
+    {% for fighter in fighters %}
+    <a href="{{ url_for('fighter_profile', fighter_id=fighter.id) }}" class="fighter-card">
+<img src="{{ url_for('static', filename='images/fighters/' + fighter.image_thumb) }}" alt="{{ fighter.name }}" />
+      <h2>{{ fighter.name }}</h2>
+      <p>{{ fighter.weight_class }}</p>
+    </a>
+    {% endfor %}
+  </section>
+
+</body>
+</html>
