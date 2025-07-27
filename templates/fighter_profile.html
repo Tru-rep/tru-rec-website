@@ -76,35 +76,36 @@
   <h2><em>{{ fighter.name }}</em>{% if fighter.nickname %} — “{{ fighter.nickname }}”{% endif %}</h2>
   <p>{{ fighter.description }}</p>
 </div>
-
 <div class="fight-history">
   <h2>FIGHT HISTORY</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Result</th>
-        <th>Opponent</th>
-        <th>Date</th>
-        <th>Method</th>
-        <th>Notes</th>
-      </tr>
-    </thead>
-    <tbody id="fight-history-body">
-      {% for bout in fighter.fight_history[:5] %}
-      <tr>
-        <td>
-          <span class="result {{ bout.result | lower }}">
-            {{ bout.result }}
-          </span>
-        </td>
-        <td>{{ bout.opponent }}</td>
-        <td>{{ bout.date }}</td>
-        <td>{{ bout.method }}</td>
-        <td>{{ bout.org }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-scroll-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Result</th>
+          <th>Opponent</th>
+          <th>Date</th>
+          <th>Method</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="fight-history-body">
+        {% for bout in fighter.fight_history[:5] %}
+        <tr>
+          <td>
+            <span class="result {{ bout.result | lower }}">
+              {{ bout.result }}
+            </span>
+          </td>
+          <td>{{ bout.opponent }}</td>
+          <td>{{ bout.date }}</td>
+          <td>{{ bout.method }}</td>
+          <td>{{ bout.org }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
   {% if fighter.fight_history|length > 5 %}
   <div class="show-more-container">
@@ -112,6 +113,7 @@
   </div>
   {% endif %}
 </div>
+
 
 <section class="px-4 md:px-12 lg:px-32 py-10">
   <h2 class="text-white text-3xl font-extrabold mb-6">Gallery</h2>
