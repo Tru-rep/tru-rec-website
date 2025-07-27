@@ -3,38 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact us| TruBoxing</title>
- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-        <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <title>Contact Us | TruBoxing</title>
 
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Quick Fix for Burger Display -->
+  <style>
+    @media (min-width: 769px) {
+      .burger {
+        display: none !important;
+      }
+    }
+
+    .coming-soon-container {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .coming-soon-container h1 {
+      font-size: 48px;
+      color: #0047ab;
+      margin-bottom: 10px;
+    }
+
+    .coming-soon-container p {
+      font-size: 20px;
+      color: #555;
+    }
+  </style>
+</head>
 
 <body>
-    <!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-container">
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruLogo" class="logo" />
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruLogo" class="logo" />
+      <i class="fas fa-bars burger" id="burger"></i>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
+        <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
+        <li><a href="/merchandise">MERCHANDISE</a></li>
+        <li><a href="/sponsors">SPONSORS</a></li>
+        <li><a href="/contact">CONTACT US</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Burger Icon (For mobile) -->
-  <i class="fas fa-bars burger" id="burger"></i>
-
-
-
-    <!-- Navigation Links -->
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/">Home</a></li>
-      <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
-      <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
-      <li><a href="/merchandise">MERCHANDISE</a></li>
-      <li><a href="/sponsors">SPONSORS</a></li>
-      <li><a href="/contact">CONTACT US</a></li>
-    </ul>
+  <!-- Coming Soon Section -->
+  <div class="coming-soon-container">
+    <h1>Contact Us</h1>
+    <p>🚧 Coming Soon 🚧</p>
   </div>
-</nav>
 
-    <title>Contact Us | TruBoxing</title>
-<h1>Contact Us</h1>
-<p>🚧 Coming Soon 🚧</p>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column logo-column">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruBoxing Logo" class="footer-logo">
+        <p><strong>TruBoxing – Building Malaysia’s Boxing Future</strong></p>
+        <p>At TruBoxing, we believe that every boxer deserves a stage — from newcomers stepping into the ring for the first time, to experienced fighters chasing greatness.</p>
+      </div>
 
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/events">EVENTS</a></li>
+          <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
+          <li><a href="/merchandise">MERCHANDISE</a></li>
+          <li><a href="/sponsors">SPONSORS</a></li>
+          <li><a href="/contact">CONTACT US</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact us</h3>
+        <ul>
+          <li>📞 +60 111 8808 511</li>
+          <li>📞 +60 14 360 9582</li>
+          <li>✉️ truboxingmy@gmail.com</li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Social Media</h3>
+        <ul>
+          <li><a href="https://instagram.com/truboxing.co" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="https://facebook.com/truboxing.co" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+          <li><a href="https://youtube.com/@truboxing" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p>&copy; 2025 TruRec. All rights reserved.</p>
+  </footer>
 </body>
+</html>

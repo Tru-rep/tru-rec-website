@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{{ fighter.name }} | Profile</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/fighter_profile.css') }}">
-      <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+
 
 </head>
 <body>
@@ -14,9 +18,16 @@
 <nav class="navbar">
   <div class="navbar-container">
     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruLogo" class="logo" />
-    <ul class="nav-links">
+
+    <!-- Burger Icon (For mobile) -->
+  <i class="fas fa-bars burger" id="burger"></i>
+
+
+
+    <!-- Navigation Links -->
+    <ul class="nav-links" id="navLinks">
       <li><a href="/">Home</a></li>
-      <li><a href="/events">EVENTS</a></li>
+      <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
       <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
       <li><a href="/merchandise">MERCHANDISE</a></li>
       <li><a href="/sponsors">SPONSORS</a></li>

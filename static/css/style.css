@@ -39,7 +39,7 @@ body {
 /* Navigation links */
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 50px;
   list-style: none;
   transition: all 0.3s ease;
 }
@@ -84,26 +84,7 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .burger {
-    display: block;
-  }
 
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: #0047ab;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 20px 0;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-}
 
 /* HERO SLIDER */
 .hero-slider {
@@ -599,5 +580,48 @@ body {
 
   .footer-logo {
     margin: 0 auto 15px;
+  }
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+    flex-direction: column;       /* ✅ Stack logo and nav links vertically */
+    align-items: center;          /* ✅ Center content horizontally */
+  }
+  .burger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0047ab;
+    width: 100%;
+    padding: 20px 0;
+   border-bottom: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  }
+    .nav-links li {
+    margin: 10px 0;            /* ✅ add spacing between items */
+  }
+
+
+  .nav-links.show {
+    display: flex;
+      opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  }
+   .overlay h1 {
+    font-size: 50px ; /* ← forces override */
+    line-height: 1.2 ;
+   }
+  .overlay p {
+    font-size: 16px;
   }
 }

@@ -5,6 +5,11 @@ body {
   margin: 0;
   padding: 0;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* Full navbar wrapper */
 .navbar {
   width: 100%;
@@ -132,19 +137,19 @@ h3 {
 
 @media (max-width: 768px) {
   .profile-container {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+   flex-direction: column;
     padding: 20px 10px;
   }
 
   .profile-left img {
-    max-width: 220px;
+    max-width: 100%;     /* ✅ Ensure image never overflows */
+    height: auto;
   }
 
   .profile-right {
-    margin-left: 20px;
-    max-width: 100%;
+    margin-left: 0;     /* ✅ Remove left offset */
+    padding: 0 10px;     /* ✅ Add safe padding */
+    text-align: center;  /* ✅ Optional: align center for better UX */
   }
 
   .profile-right h1 {
@@ -365,4 +370,58 @@ img.hover\:scale-105:hover {
 
 .transition-transform {
   transition: transform 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .burger {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .navbar-container {
+    flex-direction: column;       /* ✅ Stack logo and nav links vertically */
+    align-items: center;          /* ✅ Center content horizontally */
+  }
+  .burger {
+    display: block;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0047ab;
+    width: 100%;
+    padding: 20px 0;
+   border-bottom: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  }
+    .nav-links li {
+    margin: 10px 0;            /* ✅ add spacing between items */
+  }
+
+
+  .nav-links.show {
+    display: flex;
+      opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  }
+   .overlay h1 {
+    font-size: 50px ; /* ← forces override */
+    line-height: 1.2 ;
+   }
+  .overlay p {
+    font-size: 16px;
+  }
 }
