@@ -115,7 +115,7 @@ fighters = [
         "gallery": ["awab1.jpg", "awab2.jpg"]
     },
     {
-        "id": "imran bazooka",
+        "id": "bazooka",
         "name": "imran bazooka",
         "nickname": "Bazooka",
         "weight_class": "Light Heavyweight",
@@ -135,7 +135,7 @@ fighters = [
     },
 
     {
-        "id": "arman marquez",
+        "id": "marquez",
         "name": "arman marquez",
         "nickname": "The peekaboo",
         "weight_class": "Light-weight",
@@ -155,7 +155,7 @@ fighters = [
         "gallery": []
     },
     {
-        "id": "timofey mikaylov",
+        "id": "mikaylov",
         "name": "timofey mikaylov",
         "nickname": "The russian eagle",
         "weight_class": "flyweight",
