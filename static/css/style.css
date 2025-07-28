@@ -91,6 +91,8 @@ body {
   position: relative;
   height: 100vh;
   overflow: hidden;
+  text-transform: uppercase;
+
 }
 
 .slide {
@@ -193,28 +195,48 @@ body {
 
 /* MOVING CAUTION TAPE */
 .caution-tape-wrapper {
-  overflow: hidden;
-  background-color: black;
-  height: 40px;
-  position: relative;
+   overflow: hidden;
+  background-color: #000;
+  border-top: 2px solid red;
+  border-bottom: 2px solid red;
+  padding: 8px 0;
 }
 
 .caution-tape {
-  display: flex;
   white-space: nowrap;
-  animation: scroll 10s linear infinite;
-  font-family: 'Anton', sans-serif;
-  font-weight: 500;
 }
 
-.caution-tape span {
-  color: white;
-
-  font-size: 25px;
-  padding: 0 30px;
+.tape-track {
+  display: inline-block;
+  animation: loopBelt 20s linear infinite;
+}
+.tape-track span {
+  display: inline-block;
+  margin: 0 40px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
   text-transform: uppercase;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
+  letter-spacing: 1px;
+}
+.caution-tape span {
+    display: inline-block;
+  margin: 0 40px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+
+@keyframes loopBelt {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .boxer-section {
@@ -238,14 +260,18 @@ body {
 }
 
 .boxer-card {
-  width: 220px;
   background: white;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+   display: block;
+  text-decoration: none;
+  color: inherit;
 }
-
+.boxer-card:hover {
+  transform: scale(1.02);
+}
 .boxer-card img {
  width: 100%;
   height: 200px;
@@ -363,6 +389,44 @@ body {
   padding: 10px 0;
   font-style: italic;
 }
+.fighter-link {
+  text-decoration: none;
+  color: inherit;
+}
+.fighter-link:hover .boxer-card {
+  transform: scale(1.03);
+  transition: transform 0.2s ease;
+}
+.video-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+}
+
+.video-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Shorts are vertical – smaller width */
+  margin: 0 auto;
+  padding-bottom: 177.77%; /* 9:16 aspect ratio */
+  height: 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
 
 .see-more {
   background-color: #0052cc;
@@ -373,6 +437,11 @@ body {
   font-weight: bold;
   color: white;
   flex-direction: column;
+  padding: 20px;
+}
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
 }
 
