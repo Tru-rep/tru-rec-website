@@ -397,36 +397,21 @@ body {
   transform: scale(1.03);
   transition: transform 0.2s ease;
 }
-.video-section {
-  padding: 40px 20px;
-  text-align: center;
-  background-color: #000;
-  color: #fff;
-}
-
-.video-section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 400px; /* Shorts are vertical – smaller width */
+  max-width: 400px; /* Default: narrow for YouTube Shorts */
   margin: 0 auto;
   padding-bottom: 177.77%; /* 9:16 aspect ratio */
   height: 0;
 }
 
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
+@media (min-width: 768px) {
+  .video-container {
+    max-width: 300px; /* Slightly smaller on desktops */
+  }
 }
+
 
 .see-more {
   background-color: #0052cc;
