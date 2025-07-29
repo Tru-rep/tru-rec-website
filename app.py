@@ -114,25 +114,43 @@ fighters = [
         ],
         "gallery": ["awab1.jpg", "awab2.jpg"]
     },
+    
     {
-        "id": "bazooka",
-        "name": "imran bazooka",
-        "nickname": "Bazooka",
-        "weight_class": "Light Heavyweight",
-        "image_thumb": "thumbnails/bazokathumb.png",        # used in fighters.html
-        "image_profile": "profiles/bazoka.png",    # used in fighter_profile.html
-        "wins": 0,
-        "losses": 0,
-        "draws": 0,
-        "kos": 0,
-        "age": 0,
-        "height": "TBA",
-        "stance": "TBA",
-        "country": "Malaysia",
-        "description": "Edit this later.",
-        "fight_history": [],
-        "gallery": []
-    },
+    "id": "bazooka",
+    "name": "Imran Hanafi b Mohamad",
+    "nickname": "The Bazooka",
+    "weight_class": "Light Heavyweight",
+    "image_thumb": "thumbnails/bazokathumb.png",
+    "image_profile": "profiles/bazoka.png",
+    "wins": 2,
+    "losses": 0,
+    "draws": 0,
+    "kos": 2,
+    "age": 28,  # As of 2025, born 16/10/1996
+    "height": "179 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "Imran, known as The Bazooka, is a heavyweight boxer like no other—a perfect balance of raw power and lightning speed. With a massive, muscular build, he defies expectations by moving with surprising agility and precision. His punches hit like explosions, but it’s his ability to control the tempo and outsmart his opponents that truly sets him apart. In the ring, Imran is more than just a fighter—he’s a strategist in motion, a symbol of harmony between strength and speed, muscle and mind.",
+    "fight_history": [
+        {
+            "result": "Win",
+            "opponent": "Zulfamie",
+            "date": "24/05/2025",
+            "method": "TKO",
+            "org": "Ultimate Beatdown 56"
+        },
+        {
+            "result": "Win",
+            "opponent": "Jay Kho",
+            "date": "23/02/2025",
+            "method": "TKO",
+            "org": "Ultimate Beatdown 57"
+        }
+    ],
+"gallery": [
+    "fighters/Gallery/bazooka1.jpg",
+    "fighters/Gallery/bazooka2.jpg",
+]    },
 
     {
         "id": "marquez",
