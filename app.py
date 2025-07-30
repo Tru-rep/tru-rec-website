@@ -37,18 +37,21 @@ fighters = [
         "image_thumb": "thumbnails/Dannythumb.png",
         "image_profile": "profiles/dannypro.png",
         "wins": 3,
-        "losses": 1,
+        "losses": 0,
         "draws": 0,
         "kos": 2,
-        "age": 21,
-        "height": "172 CM",
-        "stance": "ORTHODOX",
+        "age": 20,
+        "height": "175 CM",
+        "stance": "MULTISTANCE",
         "country": "Malaysia",
-        "description": "Crowd favorite and natural-born hitter...",
+        "description": "Danial “Danny” Iskandar is a self-trained fighter from Tanjung Putih Melati who blends full-contact Silat, Muay Thai, and Boxing into a powerful, pressure-heavy style. Known for sharp one-two combos, explosive counters, and unorthodox footwork, Danny brings relentless energy and striking precision into every fight always aiming to break rhythm and dominate",
         "fight_history": [
-            {"result": "Win", "opponent": "Ali Rauf", "date": "2024-12-03", "method": "UD", "org": "TruBoxing"}
+            {"result": "Win", "opponent": "Sugar", "date": "2025-05-24", "method": "KO", "org": "TruBoxing"},
+            {"result": "Win", "opponent": "Adzmer", "date": "2025-06-28", "method": "KO", "org": "TruBoxing"}
         ],
-        "gallery": ["danny1.jpg", "danny2.jpg", "danny3.jpg"]
+        "gallery": [ "fighters/gallery/danny1.jpg",
+  "fighters/gallery/danny2.jpg",
+  "fighters/gallery/danny3.jpg"]
     },
     {
         "id": "buki",
@@ -71,7 +74,6 @@ fighters = [
         ],
         "gallery": ["buki1.jpg", "buki2.jpg"]
     },
-
     {
         "id": "amirul",
         "name": "Amirul",
@@ -114,52 +116,38 @@ fighters = [
         ],
         "gallery": ["awab1.jpg", "awab2.jpg"]
     },
-    
     {
-    "id": "bazooka",
-    "name": "Imran Hanafi b Mohamad",
-    "nickname": "The Bazooka",
-    "weight_class": "Light Heavyweight",
-    "image_thumb": "thumbnails/bazokathumb.png",
-    "image_profile": "profiles/bazoka.png",
-    "wins": 2,
-    "losses": 0,
-    "draws": 0,
-    "kos": 2,
-    "age": 28,  # As of 2025, born 16/10/1996
-    "height": "179 CM",
-    "stance": "Orthodox",
-    "country": "Malaysia",
-    "description": "Imran, known as The Bazooka, is a heavyweight boxer like no other—a perfect balance of raw power and lightning speed. With a massive, muscular build, he defies expectations by moving with surprising agility and precision. His punches hit like explosions, but it’s his ability to control the tempo and outsmart his opponents that truly sets him apart. In the ring, Imran is more than just a fighter—he’s a strategist in motion, a symbol of harmony between strength and speed, muscle and mind.",
-    "fight_history": [
-        {
-            "result": "Win",
-            "opponent": "Zulfamie",
-            "date": "24/05/2025",
-            "method": "TKO",
-            "org": "Ultimate Beatdown 56"
-        },
-        {
-            "result": "Win",
-            "opponent": "Jay Kho",
-            "date": "23/02/2025",
-            "method": "TKO",
-            "org": "Ultimate Beatdown 57"
-        }
-    ],
-"gallery": [
-    "fighters/Gallery/bazooka1.jpg",
-    "fighters/Gallery/bazooka2.jpg",
-]    },
-
+        "id": "bazooka",
+        "name": "Imran Hanafi b Mohamad",
+        "nickname": "The Bazooka",
+        "weight_class": "Light Heavyweight",
+        "image_thumb": "thumbnails/bazokathumb.png",
+        "image_profile": "profiles/bazoka.png",
+        "wins": 2,
+        "losses": 0,
+        "draws": 0,
+        "kos": 2,
+        "age": 28,
+        "height": "179 CM",
+        "stance": "Orthodox",
+        "country": "Malaysia",
+        "description": "Imran, known as The Bazooka, is a heavyweight boxer like no other—a perfect balance of raw power and lightning speed. With a massive, muscular build, he defies expectations by moving with surprising agility and precision. His punches hit like explosions, but it’s his ability to control the tempo and outsmart his opponents that truly sets him apart. In the ring, Imran is more than just a fighter—he’s a strategist in motion, a symbol of harmony between strength and speed, muscle and mind.",
+        "fight_history": [
+            {"result": "Win", "opponent": "Zulfamie", "date": "24/05/2025", "method": "TKO", "org": "Ultimate Beatdown 56"},
+            {"result": "Win", "opponent": "Jay Kho", "date": "23/02/2025", "method": "TKO", "org": "Ultimate Beatdown 57"}
+        ],
+        "gallery": [
+            "fighters/Gallery/bazooka1.jpg",
+            "fighters/Gallery/bazooka2.jpg"
+        ]
+    },
     {
         "id": "marquez",
         "name": "arman marquez",
         "nickname": "The peekaboo",
         "weight_class": "Light-weight",
         "image_profile": "thumbnails/armanthumb.png",
-        "image_thumb": "profiles/armanpro.png",    
-        
+        "image_thumb": "profiles/armanpro.png",
         "wins": 0,
         "losses": 0,
         "draws": 0,
@@ -179,7 +167,6 @@ fighters = [
         "weight_class": "flyweight",
         "image_thumb": "thumbnails/Timofeythumb.png",
         "image_profile": "profiles/tompro.png",
-
         "wins": 0,
         "losses": 0,
         "draws": 0,
@@ -191,17 +178,34 @@ fighters = [
         "description": "Edit this later.",
         "fight_history": [],
         "gallery": []
+    },
+    {
+        "id": "calif",
+        "name": "Muhammad Calif Hairi",
+        "nickname": "Calif Chaos",
+        "weight_class": "Atomweight",
+        "image_thumb": "thumbnails/califthumb.png",
+        "image_profile": "profiles/shadow.png",
+        "wins": 1,
+        "losses": 1,
+        "draws": 0,
+        "kos": 1,
+        "age": 15,
+        "height": "160 CM",
+        "stance": "Orthodox",
+        "country": "Malaysia",
+        "description": "Young, fearless, and disciplined — Muhammad Calif Hairi, aka 'Calif Chaos', is quickly gaining attention as one of Sabah’s most promising prospects. His relentless drive and sharp fundamentals make him a rising star in the Atomweight division.",
+        "fight_history": [
+            {"result": "Win", "opponent": "Aqil Rais Khan", "date": "26/04/2025", "method": "KO", "org": "Malaysia Fight League"},
+            {"result": "Lose", "opponent": "Muhammad Firdaus Yaakob", "date": "26/07/2025", "method": "Unanimous Decision", "org": "Malaysia Fight League"}
+        ],
+        "gallery": ["calif1.jpg", "calif2.jpg", "calif3.jpg"]
     }
 ]
-
-
 
 @app.route('/')
 def home():
     return render_template('index.html')
-
-
-# Existing fighters list here...
 
 @app.route("/fighter/<fighter_id>")
 def fighter_profile(fighter_id):
@@ -210,13 +214,11 @@ def fighter_profile(fighter_id):
         return "Fighter not found", 404
     return render_template("fighter_profile.html", fighter=fighter)
 
-
 @app.route("/fighters")
 def fighters_page():
     search_query = request.args.get("search", "").strip().lower()
     weight_filter = request.args.get("weight", "").strip().lower()
 
-    # Filter logic
     filtered_fighters = []
     for fighter in fighters:
         name_match = search_query in fighter["name"].lower()
@@ -229,7 +231,7 @@ def fighters_page():
 @app.route("/events")
 def events_page():
     return render_template("events.html")
-    
+
 @app.route('/merchandise')
 def merchandise():
     return render_template('merchandise.html')
@@ -241,7 +243,6 @@ def sponsors():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
