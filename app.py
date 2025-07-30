@@ -26,7 +26,6 @@ fighters = [
             {"result": "LOSS", "opponent": "Ezam", "date": "10th May 2025", "method": "UD", "org": "Golden Glove Malaysia 2025"},
             {"result": "WIN", "opponent": "Joe Wujiang", "date": "1st May 2025", "method": "UD", "org": "Wujiang Fight Night 2.0"}
         ],
-        "gallery": ["shamel1.jpeg", "shamel2.jpeg", "shamel3.jpg"]
     },
     {
         "id": "danny",
@@ -49,9 +48,7 @@ fighters = [
             {"result": "Win", "opponent": "Sugar", "date": "2025-05-24", "method": "KO", "org": "TruBoxing"},
             {"result": "Win", "opponent": "Adzmer", "date": "2025-06-28", "method": "KO", "org": "TruBoxing"}
         ],
-        "gallery": [ "fighters/gallery/danny1.jpg",
-  "fighters/gallery/danny2.jpg",
-  "fighters/gallery/danny3.jpg"]
+       
     },
     {
         "id": "buki",
@@ -72,7 +69,6 @@ fighters = [
         "fight_history": [
             {"result": "Win", "opponent": "Lim Zhi", "date": "2024-07-15", "method": "TKO", "org": "BoxHub"}
         ],
-        "gallery": ["buki1.jpg", "buki2.jpg"]
     },
     {
         "id": "amirul",
@@ -93,7 +89,6 @@ fighters = [
         "fight_history": [
             {"result": "Win", "opponent": "Reza Talib", "date": "2024-06-20", "method": "KO", "org": "BoxNation"}
         ],
-        "gallery": ["mahi1.jpg"]
     },
     {
         "id": "awab",
@@ -114,7 +109,6 @@ fighters = [
         "fight_history": [
             {"result": "Win", "opponent": "Zul Akbar", "date": "2024-10-02", "method": "KO", "org": "TruBoxing"}
         ],
-        "gallery": ["awab1.jpg", "awab2.jpg"]
     },
     {
         "id": "bazooka",
@@ -136,10 +130,7 @@ fighters = [
             {"result": "Win", "opponent": "Zulfamie", "date": "24/05/2025", "method": "TKO", "org": "Ultimate Beatdown 56"},
             {"result": "Win", "opponent": "Jay Kho", "date": "23/02/2025", "method": "TKO", "org": "Ultimate Beatdown 57"}
         ],
-        "gallery": [
-            "fighters/Gallery/bazooka1.jpg",
-            "fighters/Gallery/bazooka2.jpg"
-        ]
+  
     },
     {
         "id": "marquez",
@@ -158,7 +149,6 @@ fighters = [
         "country": "malaysia",
         "description": "Edit this later.",
         "fight_history": [],
-        "gallery": []
     },
     {
         "id": "mikaylov",
@@ -177,7 +167,7 @@ fighters = [
         "country": "russia",
         "description": "Edit this later.",
         "fight_history": [],
-        "gallery": []
+      
     },
     {
         "id": "calif",
@@ -199,8 +189,135 @@ fighters = [
             {"result": "Win", "opponent": "Aqil Rais Khan", "date": "26/04/2025", "method": "KO", "org": "Malaysia Fight League"},
             {"result": "Lose", "opponent": "Muhammad Firdaus Yaakob", "date": "26/07/2025", "method": "Unanimous Decision", "org": "Malaysia Fight League"}
         ],
-        "gallery": ["calif1.jpg", "calif2.jpg", "calif3.jpg"]
-    }
+        
+    },
+    {
+    "id": "yusri_ucop",
+    "name": "Muhammad Yusri bin Abdullah",
+    "nickname": "Yusri Ucop",
+    "weight_class": "Super Welterweight",  # ~70 kg
+    "image_thumb": "thumbnails/yusrithumb.png",   # please insert
+    "image_profile": "profiles/yusripro.png",         # please insert
+    "wins": 0,
+    "losses": 1,
+    "draws": 0,
+    "kos": 0,
+    "age": 29,                      # DOB 6/5/1996 → age as of 2025-07-30
+    "height": "168 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "Disciplined Kajang-based boxer competing around the 70 kg mark. Focused on sharpening fundamentals and gaining ring experience in the super welterweight class.",
+    "fight_history": [
+        {
+            "result": "Lose",
+            "opponent": "unknown",
+            "date": "unknown",
+            "method": "TKO",
+            "org": "TBA"
+        }
+    ],
+   
+},
+{
+    "id": "rizqy",
+    "name": "Muhammad Rizqullah bin Muzaffar Shah",
+    "nickname": "Rizqy",
+    "weight_class": "Pinweight",
+    "image_thumb": "thumbnails/rizkythumb.png",   # please insert
+    "image_profile": "profiles/shadow.png",         # please insert
+    "wins": 2,
+    "losses": 0,
+    "draws": 0,
+    "kos": 0,
+    "age": 9,                      # DOB 02 Nov 2015 → age as of 2025-07-30
+    "height": "130 CM",
+    "stance": "TBA",
+    "country": "Malaysia",
+    "description": "Young Malaysian prospect at 25–30 kg; disciplined and active on the amateur scene.",
+    "fight_history": [
+        {
+            "result": "Win",
+            "opponent": "Al Firas",
+            "date": "TBA",
+            "method": "Unanimous Decision",
+            "org": "Twins Championship Amateur"
+        },
+        {
+            "result": "Win",
+            "opponent": "Mika",
+            "date": "TBA",
+            "method": "Unanimous Decision",
+            "org": "TruBoxing & Twin"
+        }
+    ]
+},
+{
+    "id": "aqil_anak_rimau",
+    "name": "Muhammad Aqil Asyraaf Bin Mohd Rasyiddie",
+    "nickname": "Aqil Anak Rimau",
+    "weight_class": "Paperweight ",
+    "image_thumb": "thumbnails/aqilthumb.png",      # please insert
+    "image_profile": "profiles/aqilpro.png",         # please insert
+    "wins": 5,
+    "losses": 1,
+    "draws": 0,
+    "kos": 1,                                        # TKO in Fight 6
+    "age": 13,                                       # DOB 2012-05-14
+    "height": "161 CM",
+    "stance": "TBA",                                 # please confirm: Orthodox / Southpaw / Multi-Stance
+    "country": "Malaysia",
+    "description": (
+        "KLBA prospect at 36–39 kg with high work-rate and disciplined ring craft. "
+        "Best Boxer (Tinju Bakat Kebangsaan 13–14 thn). Gym: Kuala Lumpur Boxing Academy (KLBA). "
+        "Coaches: Azmi Bin Yusuf / Norfazlie Bin Adni. Socials: Facebook/TikTok 'Aqil Anak Rimau'."
+    ),
+    "fight_history": [
+        {
+            "result": "Lose",
+            "opponent": "Rizqi Mirza",
+            "date": "2024-11-16",
+            "method": "Points",
+            "org": "Trust Boxing Championship — Seremban Prima"
+        },
+        {
+            "result": "Win",
+            "opponent": "Lupa",
+            "date": "2025-02-08",                    # event 8–9 Feb; using first day
+            "method": "Points",
+            "org": "Twin Championship X — Seremban Prima (Event 8–9 Feb 2025)"
+        },
+        {
+            "result": "Win",
+            "opponent": "Muhammad Arief Bin Azmi (Trg)",
+            "date": "2025-02-12",
+            "method": "Points",
+            "org": "Kejohanan Tinju Bakat Kebangsaan 2025 (13–14) — Majlis Sukan Negara, Nilai"
+        },
+        {
+            "result": "Win",
+            "opponent": "Elthonly Anak Tensa (SRWK)",
+            "date": "2025-02-13",
+            "method": "Points",
+            "org": "Kejohanan Tinju Bakat Kebangsaan 2025 (13–14) — Majlis Sukan Negara, Nilai"
+        },
+        {
+            "result": "Win",
+            "opponent": "Muhammad Aakif Hambali Bin Ahmad (Perlis)",
+            "date": "2025-02-14",
+            "method": "Points",
+            "org": "Kejohanan Tinju Bakat Kebangsaan 2025 (13–14) — (Location/Weight TBA)"
+        },
+        {
+            "result": "Win",
+            "opponent": "M. Hafiz",
+            "date": "2025-06-14",                    # event 14–15 Jun; using first day
+            "method": "TKO (R2)",
+            "org": "Twins Championship Amateur & Pro FT Hari Belia Negara — Dataran Merdeka (Event 14–15 Jun 2025)"
+        }
+    ]
+}
+
+
 ]
 
 @app.route('/')
