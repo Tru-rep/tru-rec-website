@@ -189,7 +189,6 @@ fighters = [
             {"result": "Win", "opponent": "Aqil Rais Khan", "date": "26/04/2025", "method": "KO", "org": "Malaysia Fight League"},
             {"result": "Lose", "opponent": "Muhammad Firdaus Yaakob", "date": "26/07/2025", "method": "Unanimous Decision", "org": "Malaysia Fight League"}
         ],
-        
     },
     {
     "id": "yusri_ucop",
@@ -256,8 +255,8 @@ fighters = [
     "name": "Muhammad Aqil Asyraaf Bin Mohd Rasyiddie",
     "nickname": "Aqil Anak Rimau",
     "weight_class": "Paperweight ",
-    "image_thumb": "thumbnails/aqilthumb.png",      # please insert
-    "image_profile": "profiles/aqilpro.png",         # please insert
+    "image_thumb": "thumbnails/shadow.png",      # please insert
+    "image_profile": "profiles/shadow.png",         # please insert
     "wins": 5,
     "losses": 1,
     "draws": 0,
@@ -313,6 +312,206 @@ fighters = [
             "date": "2025-06-14",                    # event 14–15 Jun; using first day
             "method": "TKO (R2)",
             "org": "Twins Championship Amateur & Pro FT Hari Belia Negara — Dataran Merdeka (Event 14–15 Jun 2025)"
+        }
+    ]
+    
+},
+{
+    "id": "khalefa",
+    "name": "Ahmad Khalefa Bin Salahudin",
+    "nickname": "The Khalefa",
+    "weight_class": "Super Heavyweight",
+    "image_thumb": "thumbnails/shadow.png",      # please insert
+    "image_profile": "profiles/shadow.png",         # please insert
+    "wins": 1,
+    "losses": 0,
+    "draws": 0,
+    "kos": 0,
+    "age": 30,                                          # DOB 1995-05-10 → 30 in 2025
+    "height": "183 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": (
+        "Ahmad Khalefa, known as 'The Khalefa', is a powerful Super Heavyweight fighter "
+        "representing Syabab DM gym under coach Shamel. With a strong physical presence and "
+        "disciplined fundamentals, Khalefa made an impressive debut win at Tru X Twins Championship, "
+        "showing determination and composure in the ring."
+    ),
+    "fight_history": [
+        {
+            "result": "Win",
+            "opponent": "Along Panda",
+            "date": "2025-05-24",
+            "method": "Unanimous Decision (3 Rounds)",
+            "org": "Tru X Twins Championship — The Cage, Lalaport, Kuala Lumpur"
+        }
+    ]
+},
+{
+    "id": "aliff_azman",
+    "name": "Muhammad Aliff Syazwan bin Azman",
+    "nickname": "Brutal Iron",
+    "weight_class": "Featherweight",
+    "image_thumb": "thumbnails/shadow.png",      # please insert
+    "image_profile": "profiles/shadow.png",         # please insert
+    "wins": 0,
+    "losses": 4,
+    "draws": 0,
+    "kos": 0,                                         # no KO wins
+    "age": 26,                                        # DOB 1999-07-16 → 26 as of 2025-07-31
+    "height": "163 CM",
+    "stance": "Multi-Stance",
+    "country": "Malaysia",
+    "description": (
+        "Former state-level sprinter (MSN Melaka) turned combat athlete. Aggressive striker with a "
+        "kickboxing base who switches between orthodox and southpaw and applies constant forward pressure. "
+        "Gym: Melaka Fight Club. Coach: Coach Nizam. IG: Aliffsyazwan_azman, FB: aliffsyazwan_sprinter, TikTok: MFC merchandise."
+    ),
+    "fight_history": [
+        {
+            "result": "Lose",
+            "opponent": "Azrul",
+            "date": "2025-04-26",
+            "method": "Unanimous Decision",
+            "org": "Malaysia Fight League — Star Avenue",
+        },
+        {
+            "result": "Lose",
+            "opponent": "Aliff Akmal",
+            "date": "2025-05-24",
+            "method": "Referee Stoppage (R1)",
+            "org": "Tru X Twins Championship — The Cage, Lalaport",
+        },
+        {
+            "result": "Lose",
+            "opponent": "Adam Anaqqi",
+            "date": "2025-06-15",
+            "method": "Unanimous Decision",
+            "org": "Twins Championship — Dataran Merdeka, Kuala Lumpur",
+        },
+        {
+            "result": "Lose",
+            "opponent": "Ali Haikal",
+            "date": "2025-07-26",
+            "method": "TKO (R2)",
+            "org": "Knockout MY — The Cage, Lalaport",
+        }
+    ]
+},
+{
+    "id": "titah_kuning_manja",
+    "name": "Siti Nur Fatihah binti Mohd Azmi",
+    "nickname": "Titah Kuning Manja",
+    "weight_class": "28KG Youth",
+    "image_thumb": "thumbnails/shadowfthum.png",   # please insert
+    "image_profile": "profiles/shadowfpro.png",         # please insert
+    "wins": 0,
+    "losses": 0,
+    "draws": 0,
+    "kos": 0,
+    "age": 11,                       # DOB 20/04/2014 → age as of 2025-07-30
+    "height": "136 CM",
+    "stance": "TBA",
+    "country": "Malaysia",
+    "description": "Young and fearless freestyle boxer from Kuala Lumpur representing Black Turtle KLBA, learning the ropes and building her record in the youth division.",
+    "fight_history": []
+},
+{
+    "id": "cottt",
+    "name": "Muhamad Faisal bin Ahmad",
+    "nickname": "COTTT",
+    "weight_class": "Lightweight",
+    "image_thumb": "thumbnails/faisalthumb.png",   # please insert
+    "image_profile": "profiles/faisalpro.png",         # please insert
+    "wins": 0,
+    "losses": 1,
+    "draws": 0,
+    "kos": 0,
+    "age": 20,                       # DOB 8 Sep 2004 → age as of 2025-07-30
+    "height": "175 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "An independent swarmer-style fighter from Penang, bringing relentless pressure and fast combinations inside the lightweight division.",
+    "fight_history": [
+        {
+            "result": "Lose",
+            "opponent": "Arif",
+            "date": "2025-04-20",
+            "method": "Unanimous Decision",
+            "org": "OCTAGONMMA"
+        }
+    ]
+},
+{
+    "id": "johan",
+    "name": "Muhammad Johan bin Hafizuddin",
+    "nickname": "Johan",
+    "weight_class": "50KG-54KG",
+    "image_thumb": "thumbnails/johanthumb.png",   # please insert
+    "image_profile": "profiles/johanpro.png",         # please insert
+    "wins": 2,
+    "losses": 2,
+    "draws": 0,
+    "kos": 2,                         # from "Knockouts (KOs /2 TKOs)"
+    "age": 18,                        # DOB 25/05/2007 → age as of 2025-07-31
+    "height": "165 CM",
+    "stance": "ORTHODOX",
+    "country": "Malaysia",
+    "description": "Selangor-based boxer from Z Selbox with a boxing-first style. Active in local circuits such as TruBoxing & Twins events. Coach: Zikrey. IG: jo_hanz07.",
+    "fight_history": [
+        {
+            "result": "Win",
+            "opponent": "Faiz Flayky",
+            "date": "2025-05-24",
+            "method": "KO",
+            "org": "TruBoxing & Twins Champion"
+        },
+        {
+            "result": "Loss",
+            "opponent": "Abdul Halim",
+            "date": "2025-06-15",
+            "method": "TKO",
+            "org": "Twins Champion"
+        },
+        {
+            "result": "Win",
+            "opponent": "Afiz Aziz",
+            "date": "2025-06-26",
+            "method": "KO",
+            "org": "Twins Champion & Knockout"
+        },
+        {
+            "result": "Loss",
+            "opponent": "TBA",
+            "date": "TBA",
+            "method": "TBA",
+            "org": "TBA"
+        }
+    ]
+},
+{
+    "id": "muhamad_aidil",
+    "name": "Muhamad Aidil bin Isnin",
+    "nickname": "TBA",                     # No fight name provided
+    "weight_class": "Bantamweight",
+    "image_thumb": "thumbnails/aidilthumb.png",   # please insert
+    "image_profile": "profiles/aidilpro.png",         # please insert
+    "wins": 1,
+    "losses": 0,
+    "draws": 0,
+    "kos": 0,
+    "age": 23,                              # DOB 28/03/2002 → age as of 2025-07-31
+    "height": "161 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "Soviet-style boxer representing Katsu Boxing, coached by Amir Asanov. Known for technical skill and disciplined ring control.",
+    "fight_history": [
+        {
+            "result": "Win",
+            "opponent": "Muhd Amirul Azman",
+            "date": "2025-05-18",
+            "method": "Unanimous Decision",
+            "org": "F3 Strike Combat Tournament 2025"
         }
     ]
 }
