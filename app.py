@@ -514,7 +514,41 @@ fighters = [
             "org": "F3 Strike Combat Tournament 2025"
         }
     ]
+},
+{
+    "id": "moon",
+    "name": "Abdulmalek Maini",
+    "nickname": "Moon",
+    "weight_class": "Middleweight",        # 75 kg
+    "image_thumb": "thumbnails/malikthumb.png",   # please insert
+    "image_profile": "profiles/malikpro.png",         # please insert
+    "wins": 2,
+    "losses": 0,
+    "draws": 0,
+    "kos": 2,                                   # 2 TKOs
+    "age": 20,                                  # DOB 2005-05-12 → age as of 2025-07-31
+    "height": "176 CM",
+    "stance": "Orthadox",
+    "country": "Syria",
+    "description": "Middleweight from Kaboom Combat under coach Ali. 2–0 with both wins by TKO (referee stoppage). Handles pressure well and builds volume over the rounds. IG: abodi._2.",
+    "fight_history": [
+        {
+            "result": "Win",
+            "opponent": "M. Solihin",
+            "date": "2025-02-08",
+            "method": "TKO (Referee Stoppage, R2)",
+            "org": "Twins"
+        },
+        {
+            "result": "Win",
+            "opponent": "Supernek",
+            "date": "2025-05-24",
+            "method": "TKO (Referee Stoppage, R3)",
+            "org": "TruBoxing & Twins"
+        }
+    ]
 }
+
 
 
 ]
