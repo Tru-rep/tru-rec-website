@@ -401,7 +401,7 @@ fighters = [
 {
     "id": "titah_kuning_manja",
     "name": "Siti Nur Fatihah binti Mohd Azmi",
-    "nickname": "Titah Kuning Manja",
+    "nickname": "Tihah Kuning Manja",
     "weight_class": "28KG Youth",
     "image_thumb": "thumbnails/shadowfthum.png",   # please insert
     "image_profile": "profiles/shadowfpro.png",         # please insert
