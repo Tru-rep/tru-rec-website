@@ -256,7 +256,7 @@ fighters = [
     "nickname": "Aqil Anak Rimau",
     "weight_class": "Paperweight ",
     "image_thumb": "thumbnails/shadow.png",      # please insert
-    "image_profile": "profiles/shadow.png",         # please insert
+    "image_profile": "profiles/aqilpro.png",         # please insert
     "wins": 5,
     "losses": 1,
     "draws": 0,
