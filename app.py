@@ -353,7 +353,7 @@ fighters = [
     "nickname": "Brutal Iron",
     "weight_class": "Featherweight",
     "image_thumb": "thumbnails/shadow.png",      # please insert
-    "image_profile": "profiles/shadow.png",         # please insert
+    "image_profile": "profiles/alifpro.png",         # please insert
     "wins": 0,
     "losses": 4,
     "draws": 0,
