@@ -610,6 +610,81 @@ fighters = [
         }
     ],
 
+ },
+ {
+    "id": "mirza",
+    "name": "Mohamad Rizqi Mirza",
+    "nickname": "Mirza",
+    "weight_class": "38KG Youth",
+    "image_thumb": "thumbnails/mirzathumb.png",   # please insert
+    "image_profile": "profiles/mirzapro.png",     # please insert
+    "wins": 5,
+    "losses": 3,
+    "draws": 0,
+    "kos": 0,
+    "age": 12,                      # DOB: 20 May 2013
+    "height": "150 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "Orthodox youth boxer from Zselbox Boxing Club. Sharp fundamentals and high work-rate under Coach Ziekry.",
+    "fight_history": [
+        {
+            "result": "LOSS",
+            "opponent": "As Syauqi",
+            "date": "13 Oct 2024",
+            "method": "Unanimous Decision",
+            "org": "Twins Fight Boxing Championship — Aeon Mall Seremban 2"
+        },
+        {
+            "result": "WIN",
+            "opponent": "TBA",
+            "date": "TBA",
+            "method": "Unanimous Decision",
+            "org": "206 Trust Boxing Championship — Prima Mall Seremban"
+        },
+        {
+            "result": "WIN",
+            "opponent": "Iqbal",
+            "date": "26 Nov 2024",
+            "method": "Unanimous Decision",
+            "org": "Karnival Sukan Rumpun Selangor KRUSE’24 — Sabak Bernam"
+        },
+        {
+            "result": "WIN",
+            "opponent": "Safwan Irfan",
+            "date": "21 Dec 2024",
+            "method": "Unanimous Decision",
+            "org": "Kuala Lumpur Bike Week — Heritage Valley"
+        },
+        {
+            "result": "LOSS",
+            "opponent": "Farish Hakimi",
+            "date": "9 Feb 2025",
+            "method": "Unanimous Decision",
+            "org": "Twins X TKO — Seremban Prima Mall"
+        },
+        {
+            "result": "WIN",
+            "opponent": "Fauzi Heryanto",
+            "date": "24 May 2025",
+            "method": "Unanimous Decision",
+            "org": "The Cage — Lalaport"
+        },
+        {
+            "result": "LOSS",
+            "opponent": "Rizqi",
+            "date": "22 Jun 2025",
+            "method": "Unanimous Decision",
+            "org": "Kejohanan Tinju Bakat & Remaja Sibu 2025 — Dewan MUC Sibu"
+        },
+        {
+            "result": "WIN",
+            "opponent": "Zulhakim",
+            "date": "26 Jul 2025",
+            "method": "Unanimous Decision",
+            "org": "Knockout 101 — Lalaport"
+        }
+    ],
  }
 ]
 
