@@ -70,26 +70,36 @@ fighters = [
             {"result": "Win", "opponent": "Lim Zhi", "date": "2024-07-15", "method": "TKO", "org": "BoxHub"}
         ],
     },
-    {
-        "id": "amirul",
-        "name": "Amirul",
-        "nickname": "STEALTH",
-        "weight_class": "Welterweight",
-        "image_thumb": "thumbnails/ammirulthumb.png",
-        "image_profile": "profiles/ammirulpro.png",
-        "wins": 6,
-        "losses": 2,
-        "draws": 0,
-        "kos": 5,
-        "age": 24,
-        "height": "178 CM",
-        "stance": "ORTHODOX",
-        "country": "MALAYSIA",
-        "description": "Calculated and technical, known for movement.",
-        "fight_history": [
-            {"result": "Win", "opponent": "Reza Talib", "date": "2024-06-20", "method": "KO", "org": "BoxNation"}
-        ],
-    },
+   {
+    "id": "amirul",
+    "name": "Amirul Akmal Bin Abu Hassan",
+    "nickname": "ZERO",
+    "weight_class": "Welterweight",
+    "image_thumb": "thumbnails/ammirulthumb.png",
+    "image_profile": "profiles/ammirulpro.png",
+    "wins": 6,
+    "losses": 3,
+    "draws": 0,
+    "kos": 2,  # Based on 2 TKO/Ref stoppage wins
+    "age": 29,  # Born 1995
+    "height": "171 CM",
+    "stance": "Southpaw",
+    "country": "Malaysia",
+    "description": "Relentless fighter from Tanjung Putih Melati Gym, known for his perseverance and determination inside the ring.",
+    "fight_history": [
+        {"result": "LOSS", "opponent": "Zubair", "date": "Jan 2024", "method": "TKO", "org": "AMA FC - Lalaport The Cage"},
+        {"result": "LOSS", "opponent": "Aidid", "date": "Sep 2024", "method": "Split Decision", "org": "MFN - Dewan MBSA Seksyen 13"},
+        {"result": "LOSS", "opponent": "TBA", "date": "Nov 2024", "method": "Split Decision", "org": "Trust Boxing Championship - Seremban Prima Mall"},
+        {"result": "WIN", "opponent": "TBA", "date": "Dec 2024", "method": "TKO", "org": "UBR Fight - Bukit Hijau"},
+        {"result": "WIN", "opponent": "Hazeem", "date": "Jan 2025", "method": "Referee Stoppage", "org": "UBR Fight - Bukit Hijau"},
+        {"result": "WIN", "opponent": "TBA", "date": "Jan 2025", "method": "Split Decision", "org": "UBR Fight - Bukit Hijau"},
+        {"result": "WIN", "opponent": "Hilmi", "date": "Mar 2025", "method": "Split Decision", "org": "UBR Fight - Bukit Hijau"},
+        {"result": "LOSS", "opponent": "TBA", "date": "Mar 2025", "method": "Split Decision", "org": "UBR Fight - Bukit Hijau"},
+        {"result": "WIN", "opponent": "Shaz", "date": "Apr 2025", "method": "Referee Stoppage", "org": "UBR Fight - Bukit Hijau"}
+    ],
+ 
+},
+
     {
         "id": "awab",
         "name": "AWAB",
@@ -547,8 +557,33 @@ fighters = [
             "org": "TruBoxing & Twins"
         }
     ]
-}
-
+},
+ {
+    "id": "safar",
+    "name": "Safarrudin Bin Rasid",
+    "nickname": "SAFAR",
+    "weight_class": "Flyweight",
+    "image_thumb": "thumbnails/saffarthumb.png",
+    "image_profile": "profiles/saffarpro.png",
+    "wins": 0,
+    "losses": 1,
+    "draws": 0,
+    "kos": 0,
+    "age": 14,  # Born 2011
+    "height": "170 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "Young and determined boxer, working hard without a coach, representing Universe Gym.",
+    "fight_history": [
+        {
+            "result": "LOSS",
+            "opponent": "Mohammad Irham",
+            "date": "24 May 2025",
+            "method": "TKO",
+            "org": "Tru Boxing X Twins Championship - The Cage, Lalaport"
+        }
+    ]
+ }
 
 
 ]
