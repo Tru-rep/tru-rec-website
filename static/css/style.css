@@ -20,6 +20,7 @@ body {
   position: relative;
   top: 0;
   z-index: 1000;
+  
 }
 
 /* Navbar inner container */
@@ -46,7 +47,9 @@ body {
 
 .nav-links li {
   position: relative;
+  
 }
+.navbar .nav-links a { text-transform: uppercase !important; }
 
 .nav-links a {
   color: white;
@@ -56,6 +59,7 @@ body {
   letter-spacing: 1px;
   position: relative;
   transition: color 0.3s ease;
+  
 }
 
 .nav-links a::after {

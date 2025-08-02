@@ -21,6 +21,7 @@ body {
   top: 0;
   z-index: 1000;
 }
+.navbar .nav-links a { text-transform: uppercase !important; }
 
 /* Navbar inner container */
 .navbar-container {

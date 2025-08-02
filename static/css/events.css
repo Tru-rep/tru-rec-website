@@ -16,6 +16,7 @@ body {
 .nav-links li {
   list-style: none; /* EXTRA SAFE */
 }
+.navbar .nav-links a { text-transform: uppercase !important; }
 
 /* Flex container inside navbar */
 .navbar-container {
