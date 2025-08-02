@@ -583,9 +583,34 @@ fighters = [
             "org": "Tru Boxing X Twins Championship - The Cage, Lalaport"
         }
     ]
+ },
+ {
+    "id": "superbong",
+    "name": "Aidil Danial ",
+    "nickname": "SUPERBONG",
+    "weight_class": "Welterweight",
+    "image_thumb": "thumbnails/superbongthumb.png",   # please insert
+    "image_profile": "profiles/superbon2pro.png",     # please insert
+    "wins": 1,
+    "losses": 0,
+    "draws": 0,
+    "kos": 1,
+    "age": 18,                     # DOB 30/12/2006
+    "height": "172 CM",
+    "stance": "Orthodox",
+    "country": "Malaysia",
+    "description": "Sneaky hands you can’t even see it. Gym: Kasturi. Coach: Faris.",
+    "fight_history": [
+        {
+            "result": "WIN",
+            "opponent": "Najmud",
+            "date": "1 Jun 2025",
+            "method": "TKO (R2)",
+            "org": "FightNightKulim — Kulim, Kedah (Welterweight)"
+        }
+    ],
+
  }
-
-
 ]
 
 @app.route('/')
