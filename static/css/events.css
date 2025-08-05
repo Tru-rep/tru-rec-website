@@ -220,6 +220,48 @@ body {
   color: #555;
   margin-bottom: 10px;
 }
+/* Continuous belt mode tweaks */
+.event-media { display: block; }
+
+.event-grid.belt.auto {
+  scroll-snap-type: none;          /* disable snap during autoplay */
+  scrollbar-width: none;           /* Firefox: hide scrollbar */
+}
+.event-grid.belt.auto::-webkit-scrollbar { display: none; } /* WebKit: hide scrollbar */
+
+/* Belt on all sizes (remove !important if you only want it on mobile) */
+.event-grid.belt {
+  display: flex !important;
+  gap: 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;         /* nice manual drag */
+}
+.event-grid.belt .event-box {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+@media (max-width: 992px) {
+  .event-grid.belt .event-box { flex-basis: 60%; max-width: 60%; }
+}
+@media (max-width: 600px) {
+  .event-grid.belt .event-box { flex-basis: 85%; max-width: 85%; }
+}
+
+/* Mobile-only belt (keep if you want extra snapping on small screens) */
+@media (max-width: 768px) {
+  .event-grid.belt {
+    scroll-snap-type: x mandatory; /* snap for manual swipes; JS disables it in auto mode */
+    padding: 0 12px 8px;
+    max-width: 100%;
+  }
+  .event-grid.belt .event-box { scroll-snap-align: start; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .event-grid.belt { scroll-behavior: auto; }
+}
 
 .small-btn {
   display: inline-block;
@@ -306,10 +348,11 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
 
-   .navbar-container {
-    flex-direction: column;       /* ✅ Stack logo and nav links vertically */
-    align-items: center;          /* ✅ Center content horizontally */
+  .navbar-container {
+    flex-direction: column;       /* Stack logo and nav links vertically */
+    align-items: center;          /* Center content horizontally */
   }
+
   .burger {
     display: block;
   }
@@ -321,33 +364,35 @@ body {
     background-color: #0047ab;
     width: 100%;
     padding: 20px 0;
-   border-bottom: 2px solid #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border-bottom: 2px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease-in-out;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  }
-    .nav-links li {
-    margin: 10px 0;            /* ✅ add spacing between items */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
   }
 
+  .nav-links li {
+    margin: 10px 0; /* spacing between items */
+  }
 
   .nav-links.show {
     display: flex;
-      opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
-   .overlay h1 {
-    font-size: 50px ; /* ← forces override */
-    line-height: 1.2 ;
-   }
+
+  .overlay h1 {
+    font-size: 50px; /* override */
+    line-height: 1.2;
+  }
+
   .overlay p {
     font-size: 16px;
   }
 
-    .event-card-large {
+  .event-card-large {
     flex-direction: column;
   }
 
@@ -368,4 +413,46 @@ body {
   .footer-logo {
     margin: 0 auto 15px;
   }
+}
+
+/* ===== Belt behavior on small screens ===== */
+@media (max-width: 768px) {
+  .event-grid.belt {
+    /* switch grid -> horizontal belt */
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 12px 8px;
+    max-width: 100%;
+  }
+
+  .event-grid.belt .event-box {
+    /* show one card (85% width) at a time with snap */
+    flex: 0 0 85%;
+    max-width: 85%;
+    scroll-snap-align: start;
+  }
+
+  /* Optional: thinner scrollbar */
+  .event-grid.belt::-webkit-scrollbar { height: 8px; }
+  .event-grid.belt::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.2);
+    border-radius: 4px;
+  }
+}
+
+/* Smooth scrolling by default; disabled if user prefers reduced motion */
+.event-grid.belt { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  .event-grid.belt { scroll-behavior: auto; }
+}
+
+@media (max-width: 992px) {
+  .event-grid.belt .event-box { flex-basis: 60%; max-width: 60%; }
+}
+@media (max-width: 600px) {
+  .event-grid.belt .event-box { flex-basis: 85%; max-width: 85%; }
 }

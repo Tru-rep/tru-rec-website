@@ -1,11 +1,11 @@
-
-
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Events | TruRec</title>
 
-  <!-- FontAwesome for icons (optional, include only if used) -->
+  <!-- FontAwesome (optional) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Events-specific stylesheet -->
@@ -13,139 +13,255 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
-  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 
+  <!-- Load once; defer waits for HTML to parse -->
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-container">
-<a href="/">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruLogo" class="logo" />
-    </a>
-    <!-- Burger Icon (For mobile) -->
-  <i class="fas fa-bars burger" id="burger"></i>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruLogo" class="logo" />
+      </a>
 
+      <!-- Burger Icon (For mobile) -->
+      <i class="fas fa-bars burger" id="burger"></i>
 
-
-    <!-- Navigation Links -->
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/">Home</a></li>
-      <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
-      <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
-      <li><a href="/merchandise">MERCHANDISE</a></li>
-      <li><a href="/sponsors">SPONSORS</a></li>
-      <li><a href="/contact">CONTACT US</a></li>
-    </ul>
-  </div>
-</nav>
-
-
-
-<!-- Featured Event Section -->
-<section class="event-featured">
-  <div class="event-card-large">
-    <img src="{{ url_for('static', filename='images/MFL.png') }}" alt="Main Event Poster" />
-    <div class="event-details">
-      <h2>MALAYSIA FIGHT LEAGUE (MFL)</h2>
-      <p>Date: 28 June 2025 • Location: The Spine, Kelana Jaya</p>
-      <p>Experience 100+ fights in one night, with real scouts, raw talent, and unmatched intensity.</p>
-      <div class="event-buttons">
-        <a href="https://www.instagram.com/truboxing.co/" class="btn instagram" target="_blank">Instagram</a>
-        <a href="https://truboxing.co/register" class="btn register" target="_blank">Register Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- More Events -->
-<section class="more-events">
-  <h2 class="section-title">More Events</h2>
-  <div class="event-grid">
-    <div class="event-box">
-<img src="{{ url_for('static', filename='images/truss.png') }}" alt="Event 2">
-      <div class="event-box-text">
-        <h3>Sabah Fight Fest</h3>
-        <p>July 2025 - Kota Kinabalu</p>
-        <a href="#" class="small-btn">Details</a>
-      </div>
-    </div>
-    <div class="event-box">
-<img src="{{ url_for('static', filename='images/ultbd.png') }}" alt="Event 2">
-      <div class="event-box-text">
-        <h3>Johor State Clash</h3>
-        <p>August 2025 - Johor Bahru</p>
-        <a href="#" class="small-btn">Details</a>
-      </div>
-    </div>
-    <div class="event-box">
-<img src="{{ url_for('static', filename='images/MFL.png') }}" alt="Event 2">
-      <div class="event-box-text">
-        <h3>Penang Knockouts</h3>
-        <p>September 2025 - George Town</p>
-        <a href="#" class="small-btn">Details</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer Section -->
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-column logo-column">
-<img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruBoxing Logo" class="footer-logo">
-      <p><strong>TruBoxing – Building Malaysia’s Boxing Future</strong>
-      </p>
-      <p>At TruBoxing, we believe that every boxer deserves a stage — from newcomers stepping into the ring for the first time, to experienced fighters chasing greatness.</p>
-    </div>
-
-    <div class="footer-column">
-      <h3>Quick Links</h3>
-      <ul>
+      <!-- Navigation Links -->
+      <ul class="nav-links" id="navLinks">
         <li><a href="/">HOME</a></li>
-        <li><a href="/events">EVENTS</a></li>
+        <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
         <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
         <li><a href="/merchandise">MERCHANDISE</a></li>
         <li><a href="/sponsors">SPONSORS</a></li>
         <li><a href="/contact">CONTACT US</a></li>
       </ul>
     </div>
+  </nav>
 
-    <div class="footer-column">
-      <h3>Contact us</h3>
-      <ul>
-        <li>📞 +60 111 8808 511</li>
-        <li>📞 +60 14 360 9582</li>
-        <li>✉️ truboxingmy@gmail.com</li>
-      </ul>
+  <!-- Featured Event Section -->
+  <section class="event-featured" aria-labelledby="tfk-title">
+    <div class="event-card-large">
+      <!-- Clickable poster (keeps your original DOM shape for CSS) -->
+      <a
+        href="https://www.instagram.com/p/DLm0ak9TQ_b/"
+        class="event-media"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View event details on Instagram: The Fighting Kingdom – Season 1"
+      >
+        <picture>
+          <img
+            src="{{ url_for('static', filename='images/events/TFK.jpg') }}"
+            alt="The Fighting Kingdom – Season 1: Join The Fight poster"
+            loading="lazy"
+          />
+        </picture>
+      </a>
+
+      <div class="event-details">
+        <h2 id="tfk-title">The Fighting Kingdom (TFK) – Season 1: JOIN THE FIGHT</h2>
+        <p>
+          <time datetime="2025-09-13">13 September 2025</time>
+          • Location: Star Avenue Lifestyle Mall
+        </p>
+        <p>Registration RM50 · Powered by TFK × Malaysia Beatdown</p>
+        <p class="copy-ms">
+          Rasa kau ada skill? Masuk gelanggang &amp; tunjuk kau punya power 🔥
+          Slot limited bro. Cepat before penuh!
+        </p>
+
+        <div class="event-buttons">
+          <a href="https://forms.gle/yfcE7nvWobaP3gVD8" class="btn register" target="_blank" rel="noopener">
+            Register Now
+          </a>
+          <!-- Event Details now points to Instagram -->
+          <a
+            href="https://www.instagram.com/p/DLm0ak9TQ_b/"
+            class="btn details"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Event Details
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More Events -->
+  <section class="more-events">
+    <h2 class="section-title">More Events</h2>
+
+    <!-- Belt container -->
+    <div class="event-grid belt" data-autoplay="true" data-speed="40">
+      <div class="event-box">
+        <img src="{{ url_for('static', filename='images/truss.png') }}" alt="TRUBOXING (special)">
+        <div class="event-box-text">
+          <h3>TRUBOXING (special)</h3>
+          <p>July 2025 - Kota Kinabalu</p>
+          <a href="#" class="small-btn">Details</a>
+        </div>
+      </div>
+
+      <div class="event-box">
+        <img src="{{ url_for('static', filename='images/events/poster2.jpg') }}" alt="Johor Combat Series">
+        <div class="event-box-text">
+          <h3>Johor Combat Series</h3>
+          <p>August 2025 - Johor Bahru</p>
+          <a href="#" class="small-btn">Details</a>
+        </div>
+      </div>
+
+      <div class="event-box">
+        <img src="{{ url_for('static', filename='images/events/poster1.jpg') }}" alt="Penang Fight Night">
+        <div class="event-box-text">
+          <h3>Penang Fight Night</h3>
+          <p>September 2025 - George Town</p>
+          <a href="#" class="small-btn">Details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column logo-column">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="TruBoxing Logo" class="footer-logo">
+        <p><strong>TruBoxing – Building Malaysia’s Boxing Future</strong></p>
+        <p>At TruBoxing, we believe that every boxer deserves a stage — from newcomers stepping into the ring for the first time, to experienced fighters chasing greatness.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/events">EVENTS</a></li>
+          <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
+          <li><a href="/merchandise">MERCHANDISE</a></li>
+          <li><a href="/sponsors">SPONSORS</a></li>
+          <li><a href="/contact">CONTACT US</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact us</h3>
+        <ul>
+          <li>📞 +60 111 8808 511</li>
+          <li>📞 +60 14 360 9582</li>
+          <li>✉️ truboxingmy@gmail.com</li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Social Media</h3>
+        <ul>
+          <li>
+            <a href="https://instagram.com/truboxing.co" target="_blank" rel="noopener">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com/truboxing.co" target="_blank" rel="noopener">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com/@truboxing" target="_blank" rel="noopener">
+              <i class="fab fa-youtube"></i> YouTube
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
 
-   <div class="footer-column">
-  <h3>Social Media</h3>
-  <ul>
-    <li>
-      <a href="https://instagram.com/truboxing.co" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
-    </li>
-    <li>
-      <a href="https://facebook.com/truboxing.co" target="_blank">
-        <i class="fab fa-facebook-f"></i> Facebook
-      </a>
-    </li>
-    <li>
-      <a href="https://youtube.com/@truboxing" target="_blank">
-        <i class="fab fa-youtube"></i> YouTube
-      </a>
-    </li>
-  </ul>
-</div>
+    <!-- Bottom Footer Note -->
+    <p class="footer-note">&copy; 2025 TruRec. All rights reserved.</p>
+  </footer>
 
+  <!-- Inline belt script (only once) -->
+ <script>
+(() => {
+  const belt = document.querySelector('.event-grid.belt');
+  if (!belt) return;
 
-<!-- Bottom Footer Note -->
+  // Respect user preference
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  <p>&copy; 2025 TruRec. All rights reserved.</p>
-<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  const autoplay = String(belt.dataset.autoplay || 'true') === 'true';
+  const speed = parseFloat(belt.dataset.speed || '40'); // px/s
+  if (!autoplay || !speed) return;
+
+  // Collect original cards and clone them once to allow seamless wrap
+  const originals = Array.from(belt.children);
+  if (!originals.length) return;
+
+  // Make sure layout is horizontal; add a marker class for CSS tweaks
+  belt.classList.add('auto');
+
+  // Clone the original set once (you can clone twice for longer loops)
+  originals.forEach(node => belt.appendChild(node.cloneNode(true)));
+
+  let lastTs = 0;
+  let paused = false;
+
+  // Compute width of one full set (after cloning, scrollWidth is ~2x original)
+  let setWidth = 0;
+  const computeSetWidth = () => {
+    // After 1x clone, half of scrollWidth is the width of one set
+    setWidth = belt.scrollWidth / 2;
+  };
+  // Initial calc after next frame (ensures layout ready)
+  requestAnimationFrame(() => {
+    computeSetWidth();
+  });
+
+  // Continuous animation with rAF
+  const step = (ts) => {
+    if (!lastTs) lastTs = ts;
+    const dt = (ts - lastTs) / 1000; // seconds
+    lastTs = ts;
+
+    if (!paused && setWidth > 0) {
+      belt.scrollLeft += speed * dt;
+
+      // When we've scrolled past one full set, wrap seamlessly
+      if (belt.scrollLeft >= setWidth) {
+        belt.scrollLeft -= setWidth;
+      }
+    }
+    requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+
+  // Pause on hover/touch/focus
+  const pause = () => { paused = true; };
+  const resume = () => { paused = false; };
+
+  belt.addEventListener('mouseenter', pause);
+  belt.addEventListener('mouseleave', resume);
+  belt.addEventListener('touchstart', pause, { passive: true });
+  belt.addEventListener('touchend', resume,   { passive: true });
+  belt.addEventListener('focusin', pause);
+  belt.addEventListener('focusout', resume);
+
+  // Recalculate on resize (cards can change size at breakpoints)
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // Force a tiny scroll change so layout updates scrollWidth
+      const x = belt.scrollLeft;
+      belt.scrollLeft = x + 1;
+      belt.scrollLeft = x;
+      computeSetWidth();
+    }, 150);
+  });
+})();
+</script>
 
 </body>
 </html>
