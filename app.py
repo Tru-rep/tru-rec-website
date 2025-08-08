@@ -1,33 +1,35 @@
-# app_db_safe.py
-from flask import Flask, render_template, request
+# app.py
+from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+import os
+
+print("USING DB:", os.path.abspath("fighters.db"))
 
 app = Flask(__name__)
 
-# -----------------------------
-# BACKUP: Hardcoded fighter list (unchanged)
-# -----------------------------
-fighters = [
-    # Your full fighter list from app.py goes here (keep it as-is for backup)
-]
+fighters = []  # backup list unchanged
 
-# -----------------------------
-# Database helper functions
-# -----------------------------
 def get_fighters_from_db():
     conn = sqlite3.connect('fighters.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
+    c.execute("PRAGMA foreign_keys = ON;")
     c.execute("SELECT * FROM fighters")
-    fighters = [dict(row) for row in c.fetchall()]
+    rows = [dict(r) for r in c.fetchall()]
     conn.close()
-    return fighters
+    return rows
 
-def get_fighter_by_id_from_db(fighter_id):
+def get_fighter_by_id_from_db(fighter_id: str):
+    # sanitize here (single source of truth)
+    fighter_id = (fighter_id or "").strip().lower()
+
     conn = sqlite3.connect('fighters.db')
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
-    c.execute("SELECT * FROM fighters WHERE id = ?", (fighter_id,))
+    c.execute("PRAGMA foreign_keys = ON;")
+
+    # case-insensitive match on id
+    c.execute("SELECT * FROM fighters WHERE LOWER(id) = ?", (fighter_id,))
     fighter = c.fetchone()
     if not fighter:
         conn.close()
@@ -35,46 +37,52 @@ def get_fighter_by_id_from_db(fighter_id):
 
     fighter_dict = dict(fighter)
 
-    # Get fight history for this fighter
-    c.execute("SELECT result, opponent, date, method, org FROM fight_history WHERE fighter_id = ?", (fighter_id,))
-    fighter_dict["fight_history"] = [dict(row) for row in c.fetchall()]
+    # newest fights first
+    c.execute("""
+      SELECT result, opponent, date, method, org
+      FROM fight_history
+      WHERE LOWER(fighter_id) = ?
+      ORDER BY date DESC
+    """, (fighter_id,))
+    fighter_dict["fight_history"] = [dict(r) for r in c.fetchall()]
+
     conn.close()
     return fighter_dict
 
-# -----------------------------
-# Routes
-# -----------------------------
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
 @app.route("/fighters")
 def fighters_page():
     search_query = request.args.get("search", "").strip().lower()
     weight_filter = request.args.get("weight", "").strip().lower()
-
     try:
-        fighters_data = get_fighters_from_db()
+        data = get_fighters_from_db()
     except Exception as e:
         print("⚠ DB Error, using backup list:", e)
-        fighters_data = fighters  # fallback
+        data = fighters
 
-    filtered_fighters = []
-    for fighter in fighters_data:
-        name_match = search_query in fighter["name"].lower()
-        weight_match = weight_filter in fighter["weight_class"].lower() if weight_filter else True
-        if name_match and weight_match:
-            filtered_fighters.append(fighter)
-
-    return render_template("fighters.html", fighters=filtered_fighters)
+    filtered = []
+    for f in data:
+        name_ok = search_query in f["name"].lower()
+        weight_ok = weight_filter in f["weight_class"].lower() if weight_filter else True
+        if name_ok and weight_ok:
+            filtered.append(f)
+    return render_template("fighters.html", fighters=filtered)
 
 @app.route("/fighter/<fighter_id>")
 def fighter_profile(fighter_id):
+    # sanitize + normalize, and redirect if URL is dirty
+    clean_id = (fighter_id or "").strip().lower()
+    if clean_id != fighter_id:
+        return redirect(url_for("fighter_profile", fighter_id=clean_id), code=301)
+
     try:
-        fighter = get_fighter_by_id_from_db(fighter_id)
+        fighter = get_fighter_by_id_from_db(clean_id)
     except Exception as e:
         print("⚠ DB Error, using backup list:", e)
-        fighter = next((f for f in fighters if f["id"] == fighter_id), None)
+        fighter = next((f for f in fighters if f["id"].strip().lower() == clean_id), None)
 
     if not fighter:
         return "Fighter not found", 404
@@ -84,26 +92,39 @@ def fighter_profile(fighter_id):
 def events_page():
     return render_template("events.html")
 
-@app.route('/merchandise')
+@app.route("/merchandise")
 def merchandise():
-    return render_template('merchandise.html')
+    return render_template("merchandise.html")
 
-@app.route('/sponsors')
+@app.route("/sponsors")
 def sponsors():
-    return render_template('sponsors.html')
+    return render_template("sponsors.html")
 
-@app.route('/contact')
+@app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    return render_template("contact.html")
 
-@app.route('/test-db')
+@app.route("/test-db")
 def test_db():
-    fighters_data = get_fighters_from_db()
-    names = [f["name"] for f in fighters_data]
+    names = [f["name"] for f in get_fighters_from_db()]
     return "<br>".join(names)
 
-# -----------------------------
-# Run
-# -----------------------------
-if __name__ == '__main__':
+# quick backend check (optional)
+@app.route("/debug-fights/<fighter_id>")
+def debug_fights(fighter_id):
+    fid = (fighter_id or "").strip().lower()
+    conn = sqlite3.connect('fighters.db')
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    c.execute("""
+      SELECT result, opponent, date, method, org
+      FROM fight_history
+      WHERE LOWER(fighter_id) = ?
+      ORDER BY date DESC
+    """, (fid,))
+    rows = [dict(r) for r in c.fetchall()]
+    conn.close()
+    return "<br>".join([f"{r['date']} — {r['opponent']} — {r['result']} — {r['org']}" for r in rows])
+
+if __name__ == "__main__":
     app.run(debug=True)

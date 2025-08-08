@@ -27,7 +27,7 @@
 
     <!-- Navigation Links -->
     <ul class="nav-links" id="navLinks">
-      <li><a href="/">Home</a></li>
+      <li><a href="/">HOME</a></li>
       <li><a href="{{ url_for('events_page') }}">EVENTS</a></li>
       <li><a href="{{ url_for('fighters_page') }}">FIGHTERS</a></li>
       <li><a href="/merchandise">MERCHANDISE</a></li>
@@ -90,22 +90,19 @@
           <th>Notes</th>
         </tr>
       </thead>
-      <tbody id="fight-history-body">
-        {% for bout in fighter.fight_history[:5] %}
-        <tr>
-          <td>
-            <span class="result {{ bout.result | lower }}">
-              {{ bout.result }}
-            </span>
-          </td>
-          <td>{{ bout.opponent }}</td>
-          <td>{{ bout.date }}</td>
-          <td>{{ bout.method }}</td>
-          <td>{{ bout.org }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        <tbody id="fight-history-body">
+    {% for bout in fighter.fight_history[:5] %}
+    <tr>
+      <td><span class="result {{ bout.result | lower }}">{{ bout.result }}</span></td>
+      <td>{{ bout.opponent }}</td>
+      <td>{{ bout.date }}</td>
+      <td>{{ bout.method }}</td>
+      <td>{{ bout.org }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+
+      </table>
   </div>
 
   {% if fighter.fight_history|length > 5 %}
