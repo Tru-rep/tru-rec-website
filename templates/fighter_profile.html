@@ -63,9 +63,14 @@
         <li><strong>STANCE:</strong> {{ fighter.stance }}</li>
         <li>
           <strong>COUNTRY:</strong> {{ fighter.country }}
-          <img src="{{ url_for('static', filename='images/flags/' + fighter.country|lower|replace(' ', '_') + '.png') }}"
-               alt="{{ fighter.country }} flag"
-               class="flag-icon" />
+          <img
+          src="{{ url_for('static', filename='images/flags/' ~ (fighter.country
+                | replace('\r','') | replace('\n','') | trim | lower | replace(' ', '_')) ~ '.png') }}"
+          alt="{{ fighter.country }} flag"
+          class="flag-icon"
+          onerror="this.onerror=null;this.src='{{ url_for('static', filename='images/flags/default.png') }}';"
+        />
+
         </li>
       </ul>
     </div>
