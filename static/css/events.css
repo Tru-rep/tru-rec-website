@@ -158,13 +158,16 @@ body {
 
 .btn.register {
   background-color: #0047ab;
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .btn.register:hover {
   background-color: #003080;
 }
-
+.btn.details {
+color: #ffffff ;
+background-color: #ff4747;
+}
 /* More Events Section */
 .more-events {
   padding: 60px 20px;
