@@ -137,7 +137,7 @@ body {
   padding-inline: 20px;
   background: #0b1216;   /* dark backdrop like your ref */
   color: #e9eef2;
-    padding-bottom: 40px
+    padding-bottom: 40px;
 }
 .events-wrap .section-title {
   max-width: 1600px;
@@ -194,11 +194,16 @@ body {
   .events-grid {
     display: flex;
     gap: var(--gap);
+    justify-content: flex-start;     /* ← ensure we start at the left */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     padding: 8px 4px 12px;
     max-width: 100%;
+    scroll-padding-left: 4px;        /* ← matches the left padding above */
+    scrollbar-gutter: stable both-edges; /* optional: steadier layout */
+
+
   }
   .event-card {
     /* fixed card width; ~3 per screen with nice spacing */

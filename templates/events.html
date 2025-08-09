@@ -139,7 +139,7 @@
       </div>
     </div>
   </section>
-  
+
   <!-- More Events (WA-clickable cards with prefilled messages) -->
   <section class="events-wrap">
     <h2 class="section-title">Upcoming Championship Fights</h2>
@@ -262,6 +262,11 @@
   </footer>
 
   <!-- Removed old belt autoplay JS because the new grid doesn't use .event-grid.belt -->
-
+<script>
+  addEventListener('pageshow', () => {
+    const belt = document.querySelector('.events-grid');
+    if (belt && matchMedia('(max-width: 995px)').matches) belt.scrollLeft = 0;
+  });
+</script>
 </body>
 </html>
