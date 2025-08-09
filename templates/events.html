@@ -89,7 +89,8 @@
       </div>
     </div>
   </section>
-<!-- Featured Event Section -->
+
+  <!-- Featured Event Section 2 -->
   <section class="event-featured" aria-labelledby="tfk-title">
     <div class="event-card-large">
       <!-- Clickable poster (keeps your original DOM shape for CSS) -->
@@ -138,39 +139,69 @@
       </div>
     </div>
   </section>
+  
+  <!-- More Events (WA-clickable cards with prefilled messages) -->
+  <section class="events-wrap">
+    <h2 class="section-title">Upcoming Championship Fights</h2>
 
-  <!-- More Events -->
-  <section class="more-events">
-    <h2 class="section-title">More Events</h2>
+    <div class="events-grid" id="eventsGrid">
+      <!-- Each card opens WhatsApp with a prefilled message specific to that event -->
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Queensberry%20Promotions%27%20on%20August%2023%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/Teaser.png') }}" alt="Queensberry Promotions">
+        <div class="event-date">August 31</div>
+        <h4 class="event-org">Queensberry Promotions</h4>
+      </a>
 
-    <!-- Belt container -->
-    <div class="event-grid belt" data-autoplay="true" data-speed="40">
-      <div class="event-box">
-        <img src="{{ url_for('static', filename='images/truss.png') }}" alt="TRUBOXING (special)">
-        <div class="event-box-text">
-          <h3>TRUBOXING (special)</h3>
-          <p>July 2025 - Kota Kinabalu</p>
-          <a href="#" class="small-btn">Details</a>
-        </div>
-      </div>
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Most%20Valuable%20Promotions%27%20on%20August%2023%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/TFK.jpg') }}" alt="Most Valuable Promotions">
+        <div class="event-date">September 13</div>
+        <h4 class="event-org">Most Valuable Promotions</h4>
+      </a>
 
-      <div class="event-box">
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Matchroom%20Boxing%27%20on%20September%2006%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/MFL.png') }}" alt="Matchroom Boxing">
+        <div class="event-date">September 06</div>
+        <h4 class="event-org">Matchroom Boxing</h4>
+      </a>
+
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Ring%20Magazine%27%20on%20September%2006%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/ultbd.png') }}" alt="Ring Magazine">
+        <div class="event-date">September 06</div>
+        <h4 class="event-org">Ring Magazine</h4>
+      </a>
+
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27TruBoxing%27%20on%20September%2013%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/truss.png') }}" alt="TruBoxing">
+        <div class="event-date">Postponed</div>
+        <h4 class="event-org">TruBoxing</h4>
+      </a>
+
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Malaysia%20Beatdown%27%20on%20September%2013%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/poster2.jpg') }}" alt="Malaysia Beatdown">
+        <div class="event-date">September 13</div>
+        <h4 class="event-org">Malaysia Beatdown</h4>
+      </a>
+
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Johor%20Combat%20Series%27%20on%20October%2004%2C%202025.%20Please%20share%20details%2Fregistration.">
         <img src="{{ url_for('static', filename='images/events/poster2.jpg') }}" alt="Johor Combat Series">
-        <div class="event-box-text">
-          <h3>Johor Combat Series</h3>
-          <p>August 2025 - Johor Bahru</p>
-          <a href="#" class="small-btn">Details</a>
-        </div>
-      </div>
+        <div class="event-date">October 04</div>
+        <h4 class="event-org">Johor Combat Series</h4>
+      </a>
 
-      <div class="event-box">
-        <img src="{{ url_for('static', filename='images/events/poster1.jpg') }}" alt="Penang Fight Night">
-        <div class="event-box-text">
-          <h3>Penang Fight Night</h3>
-          <p>September 2025 - George Town</p>
-          <a href="#" class="small-btn">Details</a>
-        </div>
-      </div>
+      <a class="event-card" target="_blank" rel="noopener"
+         href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Penang%20Fight%20Night%27%20on%20November%2022%2C%202025.%20Please%20share%20details%2Fregistration.">
+        <img src="{{ url_for('static', filename='images/events/poster2.jpg') }}" alt="Penang Fight Night">
+        <div class="event-date">November 22</div>
+        <h4 class="event-org">Penang Fight Night</h4>
+      </a>
+
     </div>
   </section>
 
@@ -230,86 +261,7 @@
     <p class="footer-note">&copy; 2025 TruRec. All rights reserved.</p>
   </footer>
 
-  <!-- Inline belt script (only once) -->
- <script>
-(() => {
-  const belt = document.querySelector('.event-grid.belt');
-  if (!belt) return;
-
-  // Respect user preference
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const autoplay = String(belt.dataset.autoplay || 'true') === 'true';
-  const speed = parseFloat(belt.dataset.speed || '40'); // px/s
-  if (!autoplay || !speed) return;
-
-  // Collect original cards and clone them once to allow seamless wrap
-  const originals = Array.from(belt.children);
-  if (!originals.length) return;
-
-  // Make sure layout is horizontal; add a marker class for CSS tweaks
-  belt.classList.add('auto');
-
-  // Clone the original set once (you can clone twice for longer loops)
-  originals.forEach(node => belt.appendChild(node.cloneNode(true)));
-
-  let lastTs = 0;
-  let paused = false;
-
-  // Compute width of one full set (after cloning, scrollWidth is ~2x original)
-  let setWidth = 0;
-  const computeSetWidth = () => {
-    // After 1x clone, half of scrollWidth is the width of one set
-    setWidth = belt.scrollWidth / 2;
-  };
-  // Initial calc after next frame (ensures layout ready)
-  requestAnimationFrame(() => {
-    computeSetWidth();
-  });
-
-  // Continuous animation with rAF
-  const step = (ts) => {
-    if (!lastTs) lastTs = ts;
-    const dt = (ts - lastTs) / 1000; // seconds
-    lastTs = ts;
-
-    if (!paused && setWidth > 0) {
-      belt.scrollLeft += speed * dt;
-
-      // When we've scrolled past one full set, wrap seamlessly
-      if (belt.scrollLeft >= setWidth) {
-        belt.scrollLeft -= setWidth;
-      }
-    }
-    requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-
-  // Pause on hover/touch/focus
-  const pause = () => { paused = true; };
-  const resume = () => { paused = false; };
-
-  belt.addEventListener('mouseenter', pause);
-  belt.addEventListener('mouseleave', resume);
-  belt.addEventListener('touchstart', pause, { passive: true });
-  belt.addEventListener('touchend', resume,   { passive: true });
-  belt.addEventListener('focusin', pause);
-  belt.addEventListener('focusout', resume);
-
-  // Recalculate on resize (cards can change size at breakpoints)
-  let resizeTimer = null;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      // Force a tiny scroll change so layout updates scrollWidth
-      const x = belt.scrollLeft;
-      belt.scrollLeft = x + 1;
-      belt.scrollLeft = x;
-      computeSetWidth();
-    }, 150);
-  });
-})();
-</script>
+  <!-- Removed old belt autoplay JS because the new grid doesn't use .event-grid.belt -->
 
 </body>
 </html>
