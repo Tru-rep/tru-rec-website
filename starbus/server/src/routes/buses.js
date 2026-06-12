@@ -1,12 +1,10 @@
 import { Router } from "express";
 import { z } from "zod";
-import { pool } from "../db/pool.js";
-import { requireAuth, requireRole } from "../middleware/auth.js";
+import { store } from "../db/data.js";
 import { BUS46_ROWS, BUS46_TOTAL_SEATS } from "../utils/busLayout.js";
-import { busOwnerScopeForUser, mergeScopeParams, userCanAccessBusRow } from "../utils/ownerScope.js";
+import { requireAuth, requireRole } from "../middleware/auth.js";
 
 const router = Router();
-
 router.use(requireAuth);
 
 const AUTH_ACTIVE_MAX_DAY_OFFSET = Number(process.env.PUBLIC_MAX_SERVICE_DAY_OFFSET ?? 6);
@@ -17,51 +15,11 @@ router.get("/active", async (req, res, next) => {
       typeof req.query?.date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(req.query.date)
         ? req.query.date
         : null;
-
     const maxOff = Number.isFinite(AUTH_ACTIVE_MAX_DAY_OFFSET) ? AUTH_ACTIVE_MAX_DAY_OFFSET : 6;
-
-    if (dateParam) {
-      const [[row]] = await pool.execute(
-        `SELECT CASE
-           WHEN :bus_day BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL :max_off DAY) THEN 1
-           ELSE 0
-         END AS ok`,
-        { bus_day: dateParam, max_off: maxOff }
-      );
-      if (Number(row?.ok) !== 1) {
-        return res.status(400).json({
-          error: "التاريخ خارج نطاق الحجز (اليوم وحتى أسبوع قادم)",
-        });
-      }
+    const rows = await store.listActiveBuses(req.user, dateParam, maxOff);
+    if (rows?.error === "date") {
+      return res.status(400).json({ error: "التاريخ خارج نطاق الحجز (اليوم وحتى أسبوع قادم)" });
     }
-
-    const scope = busOwnerScopeForUser(req.user);
-    const baseParams = dateParam ? { bus_day: dateParam } : {};
-    const qParams = mergeScopeParams(baseParams, scope.params);
-
-    const [rows] = await pool.execute(
-      `SELECT
-         b.id,
-         b.bus_number,
-         b.total_seats,
-         b.seats_booked,
-         (b.total_seats - b.seats_booked) AS seats_remaining,
-         b.departure_time,
-         b.route_id,
-         b.date,
-         b.status,
-         r.origin,
-         r.destination,
-         r.price
-       FROM buses b
-       JOIN routes r ON r.id = b.route_id
-       WHERE b.date = ${dateParam ? ":bus_day" : "CURDATE()"}
-         AND b.status = 'scheduled'
-         AND r.origin = 'Omdurman'
-         ${scope.sql}
-       ORDER BY r.destination ASC, b.id ASC`,
-      qParams
-    );
     return res.json({ buses: rows });
   } catch (err) {
     return next(err);
@@ -73,51 +31,18 @@ router.get("/:id/seat-map", async (req, res, next) => {
     const id = Number(req.params.id);
     if (!Number.isFinite(id)) return res.status(400).json({ error: "Invalid id" });
 
-    const [busRows] = await pool.execute(
-      `SELECT b.id, b.total_seats, b.bus_owner_id, r.origin, r.destination
-       FROM buses b
-       JOIN routes r ON r.id = b.route_id
-       WHERE b.id = :id
-       LIMIT 1`,
-      { id }
-    );
-    const bus = busRows?.[0];
-    if (!bus) return res.status(404).json({ error: "Not found" });
-    if (!userCanAccessBusRow(req.user, bus)) {
-      return res.status(403).json({ error: "Forbidden" });
-    }
-
-    const total = Number(bus.total_seats) || BUS46_TOTAL_SEATS;
-
-    const [bookRows] = await pool.execute(
-      `SELECT seat_number, lifecycle, id AS booking_id
-       FROM bookings
-       WHERE bus_id = :id`,
-      { id }
-    );
-
-    const bySeat = {};
-    for (const row of bookRows || []) {
-      bySeat[row.seat_number] = {
-        state: row.lifecycle === "reserved" ? "reserved" : "full",
-        booking_id: row.booking_id,
-      };
-    }
-
-    const seats = {};
-    for (let n = 1; n <= total; n++) {
-      const b = bySeat[n];
-      seats[n] = b ? b.state : "empty";
-    }
+    const result = await store.getBusSeatMap(req.user, id);
+    if (!result) return res.status(404).json({ error: "Not found" });
+    if (result.forbidden) return res.status(403).json({ error: "Forbidden" });
 
     return res.json({
       bus_id: id,
-      total_seats: total,
+      total_seats: result.total_seats || BUS46_TOTAL_SEATS,
       layout: "46",
       layout_rows: BUS46_ROWS,
-      origin: bus.origin,
-      destination: bus.destination,
-      seats,
+      origin: result.origin,
+      destination: result.destination,
+      seats: result.seats,
     });
   } catch (err) {
     return next(err);
@@ -126,30 +51,7 @@ router.get("/:id/seat-map", async (req, res, next) => {
 
 router.get("/", async (req, res, next) => {
   try {
-    const scope = busOwnerScopeForUser(req.user);
-    const [rows] = await pool.execute(
-      `SELECT
-         b.id,
-         b.bus_owner_id,
-         b.bus_number,
-         b.total_seats,
-         b.seats_booked,
-         (b.total_seats - b.seats_booked) AS seats_remaining,
-         b.departure_time,
-         b.route_id,
-         b.date,
-         b.status,
-         r.origin,
-         r.destination,
-         r.price
-       FROM buses b
-       JOIN routes r ON r.id = b.route_id
-       WHERE 1=1
-       ${scope.sql}
-       ORDER BY b.date DESC, b.departure_time ASC, b.id DESC`,
-      scope.params
-    );
-
+    const rows = await store.listAllBuses(req.user);
     return res.json({ buses: rows });
   } catch (err) {
     return next(err);
@@ -161,33 +63,9 @@ router.get("/:id", async (req, res, next) => {
     const id = Number(req.params.id);
     if (!Number.isFinite(id)) return res.status(400).json({ error: "Invalid id" });
 
-    const [rows] = await pool.execute(
-      `SELECT
-         b.id,
-         b.bus_owner_id,
-         b.bus_number,
-         b.total_seats,
-         b.seats_booked,
-         (b.total_seats - b.seats_booked) AS seats_remaining,
-         b.departure_time,
-         b.route_id,
-         b.date,
-         b.status,
-         r.origin,
-         r.destination,
-         r.price
-       FROM buses b
-       JOIN routes r ON r.id = b.route_id
-       WHERE b.id = :id
-       LIMIT 1`,
-      { id }
-    );
-
-    const bus = rows?.[0];
+    const bus = await store.getBus(req.user, id);
     if (!bus) return res.status(404).json({ error: "Not found" });
-    if (!userCanAccessBusRow(req.user, bus)) {
-      return res.status(403).json({ error: "Forbidden" });
-    }
+    if (bus.forbidden) return res.status(403).json({ error: "Forbidden" });
     return res.json({ bus });
   } catch (err) {
     return next(err);
@@ -208,33 +86,12 @@ router.post("/", requireRole(["admin", "superadmin"]), async (req, res, next) =>
   try {
     const body = createBusSchema.parse(req.body);
     const departureTime = body.departure_time.length === 5 ? `${body.departure_time}:00` : body.departure_time;
-
-    let bus_owner_id = body.bus_owner_id;
-    if (req.user.role === "admin") {
-      bus_owner_id = Number(req.user.id);
-    }
-
-    const [result] = await pool.execute(
-      `INSERT INTO buses (
-        bus_owner_id, bus_number, total_seats, seats_booked, departure_time, route_id, date, status
-      ) VALUES (
-        :bus_owner_id, :bus_number, :total_seats, 0, :departure_time, :route_id, :date, :status
-      )`,
-      {
-        ...body,
-        bus_owner_id,
-        departure_time: departureTime,
-        status: body.status ?? "scheduled",
-      }
-    );
-
-    return res.status(201).json({ id: result.insertId });
+    const result = await store.createBus(req.user, { ...body, departure_time: departureTime });
+    if (result.dup) return res.status(409).json({ error: "Bus already exists for that slot" });
+    return res.status(201).json({ id: result.id });
   } catch (err) {
-    // MariaDB duplicate key error
-    if (err?.code === "ER_DUP_ENTRY") return res.status(409).json({ error: "Bus already exists for that slot" });
     return next(err);
   }
 });
 
 export default router;
-

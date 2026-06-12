@@ -11,6 +11,8 @@ import busesRoutes from "./routes/buses.js";
 import bookingsRoutes from "./routes/bookings.js";
 import reportsRoutes from "./routes/reports.js";
 import publicRoutes from "./routes/public.js";
+import { isDemoMode } from "./db/mode.js";
+import { resetDemoData } from "./db/demoStore.js";
 
 export function createApp() {
   const app = express();
@@ -58,7 +60,16 @@ export function createApp() {
     })
   );
 
-  app.get("/api/health", (_req, res) => res.json({ ok: true }));
+  app.get("/api/health", (_req, res) =>
+    res.json({ ok: true, mode: isDemoMode() ? "demo" : "production" })
+  );
+
+  if (isDemoMode()) {
+    app.post("/api/demo/reset", (_req, res) => {
+      resetDemoData();
+      return res.json({ ok: true, message: "Demo data reset to fresh seed." });
+    });
+  }
   app.use("/api/public", publicRoutes);
   app.use("/api/auth", authRoutes);
   app.use("/api/buses", busesRoutes);

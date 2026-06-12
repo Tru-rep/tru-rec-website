@@ -57,6 +57,27 @@ Use any managed MySQL 8 (or MariaDB-compatible) instance: same PaaS MySQL add-on
 
 Copy [`server/.env.example`](server/.env.example) to `server/.env` locally (never commit `.env`).
 
+## Presentation mode (no database)
+
+When Railway/MySQL is unavailable, run the full UI locally with **in-memory data** (bookings, reports, seat maps — all work; data resets on restart):
+
+```bash
+cd starbus/server
+npm run demo
+```
+
+Open `http://127.0.0.1:4001/` (customer), `/worker`, `/admin`.
+
+| Account | Password | Role |
+|---------|----------|------|
+| `worker@starbus.sd` | `changeme` | worker |
+| `superadmin@starbus.sd` | `changeme` | superadmin |
+| `monsterawab@gmail.com` | `awab2637` | superadmin |
+
+Reset demo seed without restart: `POST http://127.0.0.1:4001/api/demo/reset`
+
+To return to production MySQL, use `npm run dev` or `npm start` **without** `STARBUS_DEMO=1`.
+
 ## Smoke test (local)
 
 With DB running and `npm start` in `starbus/server`:

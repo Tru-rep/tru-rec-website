@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { z } from "zod";
-import { pool } from "../db/pool.js";
+import { store } from "../db/data.js";
 import { verifyPassword } from "../utils/password.js";
 import { signAccessToken } from "../utils/jwt.js";
 import { requireAuth } from "../middleware/auth.js";
@@ -15,16 +15,7 @@ const loginSchema = z.object({
 router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = loginSchema.parse(req.body);
-
-    const [rows] = await pool.execute(
-      `SELECT id, name, email, password, role, employer_user_id
-       FROM users
-       WHERE email = :email
-       LIMIT 1`,
-      { email }
-    );
-
-    const user = rows?.[0];
+    const user = await store.findUserByEmail(email);
     if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
     const ok = await verifyPassword(password, user.password);
@@ -49,9 +40,7 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.get("/me", requireAuth, async (req, res) => {
-  // JWT is the source of truth for foundation stage.
   return res.json({ user: req.user });
 });
 
 export default router;
-
