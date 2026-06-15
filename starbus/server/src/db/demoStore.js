@@ -40,15 +40,21 @@ function seedDemo() {
     { id: 2, origin: "Omdurman", destination: "Port Sudan", price: 8500 },
     { id: 3, origin: "Omdurman", destination: "Kassala", price: 6500 },
   ];
-  db.buses = [
-    { id: 1, bus_owner_id: 1, bus_number: "1", total_seats: 46, seats_booked: 0, departure_time: "08:00:00", route_id: 3, date: today, status: "scheduled" },
-    { id: 2, bus_owner_id: 1, bus_number: "2", total_seats: 46, seats_booked: 0, departure_time: "08:00:00", route_id: 2, date: today, status: "scheduled" },
-    { id: 3, bus_owner_id: 1, bus_number: "3", total_seats: 46, seats_booked: 0, departure_time: "08:00:00", route_id: 1, date: today, status: "scheduled" },
-  ];
+  const maxOff = 6;
+  db.buses = [];
+  let busId = 1;
+  for (let d = 0; d <= maxOff; d++) {
+    const date = addDaysYmd(today, d);
+    db.buses.push(
+      { id: busId++, bus_owner_id: 1, bus_number: "1", total_seats: 46, seats_booked: 0, departure_time: "08:00:00", route_id: 3, date, status: "scheduled" },
+      { id: busId++, bus_owner_id: 1, bus_number: "2", total_seats: 46, seats_booked: 0, departure_time: "08:00:00", route_id: 2, date, status: "scheduled" },
+      { id: busId++, bus_owner_id: 1, bus_number: "3", total_seats: 46, seats_booked: 0, departure_time: "08:00:00", route_id: 1, date, status: "scheduled" },
+    );
+  }
   db.bookings = [];
   db.nextUserId = 6;
   db.nextRouteId = 4;
-  db.nextBusId = 4;
+  db.nextBusId = busId;
   db.nextBookingId = 1;
 }
 

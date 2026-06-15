@@ -1,8 +1,8 @@
 # Render Blueprint — Starbus (monorepo: app lives in starbus/server).
 # https://render.com/docs/blueprint-spec
 #
-# After first deploy: set DB_* and WHATSAPP_NUMBER in the dashboard, then run
-# starbus/database/schema.sql and seed.sql on your MySQL instance.
+# Presentation deploy: demo mode (no MySQL). Three Omdurman routes seeded in memory.
+# For production MySQL: set startCommand to npm start, STARBUS_DEMO=0, and DB_* vars.
 
 services:
   - type: web
@@ -11,9 +11,11 @@ services:
     rootDir: starbus/server
     plan: free
     buildCommand: npm ci
-    startCommand: npm start
+    startCommand: npm run demo
     healthCheckPath: /api/health
     envVars:
+      - key: STARBUS_DEMO
+        value: "1"
       - key: NODE_VERSION
         value: "20.18.1"
       - key: JWT_EXPIRES_IN
