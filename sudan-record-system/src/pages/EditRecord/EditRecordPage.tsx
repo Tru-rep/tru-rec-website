@@ -65,11 +65,11 @@ export default function EditRecordPage() {
       <div className="flex items-center gap-3">
         <button
           onClick={() => navigate(-1)}
-          className="rounded-xl bg-slate-100 px-3 py-1.5 text-sm dark:bg-slate-800"
+          className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-charcoal hover:bg-surface-card"
         >
           ‹ رجوع
         </button>
-        <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">تعديل السجل</h1>
+        <h1 className="text-xl font-bold text-charcoal">تعديل البيانات</h1>
       </div>
 
       <RecordForm

@@ -41,11 +41,11 @@ export default function UsersPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">إدارة المستخدمين</h1>
+      <h1 className="text-xl font-bold text-charcoal">إدارة المستخدمين</h1>
 
-      <section className="rounded-xl border border-brand-200 bg-brand-50 p-4 text-sm text-brand-900 dark:border-brand-800/60 dark:bg-brand-950/40 dark:text-brand-100">
+      <section className="rounded-xl border border-brand-200 bg-brand-50 p-4 text-sm text-brand-900">
         <p className="font-semibold">إضافة مستخدم جديد</p>
-        <p className="mt-2 leading-relaxed text-brand-800 dark:text-brand-200">
+        <p className="mt-2 leading-relaxed text-brand-800">
           أنشئ المستخدمين من{' '}
           <strong>Supabase Dashboard → Authentication → Users → Add user</strong> (فعّل{' '}
           <strong>Auto Confirm User</strong>). عطّل التسجيل العام في{' '}
@@ -54,9 +54,7 @@ export default function UsersPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200">
-          المستخدمون الحاليون
-        </h2>
+        <h2 className="text-sm font-bold text-charcoal">المستخدمون الحاليون</h2>
         {usersQuery.isLoading ? (
           <LoadingState />
         ) : usersQuery.isError ? (
@@ -68,10 +66,10 @@ export default function UsersPage() {
               return (
                 <div key={user.id} className="card-base flex flex-wrap items-center gap-3 p-4">
                   <div className="min-w-0 flex-1">
-                    <p className="truncate font-semibold text-slate-900 dark:text-slate-100">
+                    <p className="truncate font-semibold text-charcoal">
                       {user.full_name || user.email}
                     </p>
-                    <p className="truncate text-xs text-slate-500 dark:text-slate-400" dir="ltr">
+                    <p className="truncate text-xs text-slate-500" dir="ltr">
                       {user.email} · {formatDate(user.created_at)}
                     </p>
                   </div>

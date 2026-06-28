@@ -35,8 +35,8 @@ export function ConfirmDialog({
         className="card-base w-full max-w-sm space-y-4 p-6"
         onClick={(e) => e.stopPropagation()}
       >
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{title}</h3>
-        <p className="text-sm text-slate-600 dark:text-slate-400">{message}</p>
+        <h3 className="text-lg font-bold text-charcoal">{title}</h3>
+        <p className="text-sm text-slate-600">{message}</p>
         <div className="flex justify-end gap-2">
           <Button variant="secondary" onClick={onCancel} disabled={loading}>
             {cancelLabel}

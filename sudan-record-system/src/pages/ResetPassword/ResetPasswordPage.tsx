@@ -71,30 +71,23 @@ export default function ResetPasswordPage() {
   if (checking) return <LoadingState label="جارٍ التحقق من الرابط..." />;
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200 p-4 dark:from-slate-950 dark:to-slate-900">
+    <div className="flex min-h-screen items-center justify-center bg-surface p-4">
       <div className="w-full max-w-md space-y-6">
         <div className="text-center">
           <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-600 text-3xl text-white shadow-lg">
             🔐
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-            تعيين كلمة مرور جديدة
-          </h1>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-            أدخل كلمة المرور الجديدة لحسابك
-          </p>
+          <h1 className="text-2xl font-bold text-charcoal">تعيين كلمة مرور جديدة</h1>
+          <p className="mt-1 text-sm text-slate-500">أدخل كلمة المرور الجديدة لحسابك</p>
         </div>
 
         <div className="card-base space-y-5 p-6">
           <SetupBanner />
 
           {!ready ? (
-            <div className="space-y-3 text-center text-sm text-slate-600 dark:text-slate-300">
+            <div className="space-y-3 text-center text-sm text-slate-600">
               <p>رابط إعادة التعيين غير صالح أو منتهٍ.</p>
-              <Link
-                to={paths.login}
-                className="font-medium text-brand-600 hover:underline dark:text-brand-400"
-              >
+              <Link to={paths.login} className="font-medium text-brand-600 hover:underline">
                 العودة لتسجيل الدخول
               </Link>
             </div>

@@ -1,76 +1,35 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
-import { useTheme } from '@/context/ThemeContext';
-import { useToast } from '@/context/ToastContext';
 import { paths } from '@/routes/paths';
 import { ROLE_LABELS } from '@/utils/constants';
+import { Avatar } from '@/components/common/Avatar';
 
-/** Sticky top bar: brand, search shortcut, profile, theme toggle, logout. */
+/** Desktop top navbar with user profile (hidden on mobile — MobileHeader used instead). */
 export function TopBar() {
-  const { profile, signOut } = useAuth();
-  const { theme, toggleTheme } = useTheme();
-  const { notify } = useToast();
-  const navigate = useNavigate();
-
-  async function handleLogout() {
-    try {
-      await signOut();
-      navigate(paths.login, { replace: true });
-    } catch {
-      notify('تعذر تسجيل الخروج', 'error');
-    }
-  }
+  const { profile } = useAuth();
 
   return (
-    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3">
-        <Link to={paths.dashboard} className="flex items-center gap-2">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-lg text-white">
-            📁
-          </span>
-          <span className="hidden text-sm font-bold text-slate-800 sm:block dark:text-slate-100">
-            نظام السجل الرقمي
-          </span>
-        </Link>
+    <header className="sticky top-0 z-20 hidden border-b border-slate-200 bg-white shadow-sm lg:block">
+      <div className="flex items-center justify-between px-6 py-3">
+        <div className="text-sm text-slate-500">لوحة التحكم الرئيسية</div>
 
-        <div className="flex items-center gap-1.5">
-          <Link
-            to={paths.search}
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-            aria-label="بحث"
-            title="بحث"
-          >
-            🔍
-          </Link>
-          <button
-            onClick={toggleTheme}
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-            aria-label="تبديل المظهر"
-            title="تبديل المظهر"
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
-          <Link
-            to={paths.settings}
-            className="hidden items-center gap-2 rounded-xl px-2 py-1.5 text-right hover:bg-slate-100 sm:flex dark:hover:bg-slate-800"
-            title="الإعدادات"
-          >
-            <div className="leading-tight">
-              <p className="text-xs font-semibold text-slate-800 dark:text-slate-100">
-                {profile?.full_name || profile?.email || 'مستخدم'}
-              </p>
-              <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                {profile ? ROLE_LABELS[profile.role] : ''}
-              </p>
-            </div>
-          </Link>
-          <button
-            onClick={handleLogout}
-            className="flex h-9 items-center rounded-xl bg-slate-100 px-3 text-xs font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
-          >
-            خروج
-          </button>
-        </div>
+        <Link
+          to={paths.settings}
+          className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2 transition hover:border-brand-200 hover:bg-brand-50"
+        >
+          <Avatar src={null} name={profile?.full_name || profile?.email || 'م'} size="sm" />
+          <div className="text-right leading-tight">
+            <p className="text-sm font-semibold text-charcoal">
+              {profile?.full_name || profile?.email || 'مسؤول النظام'}
+            </p>
+            <p className="text-[11px] text-slate-500">
+              {profile ? ROLE_LABELS[profile.role] : 'مستخدم'}
+            </p>
+          </div>
+          <svg className="h-4 w-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </Link>
       </div>
     </header>
   );

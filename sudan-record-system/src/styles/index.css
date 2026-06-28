@@ -8,11 +8,10 @@
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
+    @apply bg-surface text-charcoal antialiased;
     font-family: 'Cairo', system-ui, sans-serif;
   }
 
-  /* Respect notches on installed PWA */
   body {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
@@ -21,10 +20,22 @@
 
 @layer components {
   .input-base {
-    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500;
+    @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm text-charcoal shadow-sm outline-none transition placeholder:text-slate-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20;
   }
 
   .card-base {
-    @apply rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900;
+    @apply rounded-xl border border-slate-100 bg-white shadow-card;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-slate-300 transition hover:bg-charcoal-light hover:text-white;
+  }
+
+  .nav-item-active {
+    @apply bg-brand-600 text-white hover:bg-brand-700 hover:text-white;
+  }
+
+  .info-table-row {
+    @apply flex items-center justify-between gap-4 border-b border-slate-100 px-4 py-3 last:border-b-0;
   }
 }

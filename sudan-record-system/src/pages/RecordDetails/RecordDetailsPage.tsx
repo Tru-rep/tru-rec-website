@@ -42,49 +42,48 @@ export default function RecordDetailsPage() {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
         <button
           onClick={() => navigate(-1)}
-          className="rounded-xl bg-slate-100 px-3 py-1.5 text-sm dark:bg-slate-800"
+          className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-charcoal hover:bg-surface-card"
         >
           ‹ رجوع
         </button>
         <div className="flex gap-2">
           <Button size="sm" variant="secondary" onClick={() => navigate(paths.editRecord(record.id))}>
-            ✏️ تعديل
+            تعديل البيانات
           </Button>
           {isAdmin && (
             <Button size="sm" variant="danger" onClick={() => setConfirmOpen(true)}>
-              🗑️ حذف
+              حذف السجل
             </Button>
           )}
         </div>
       </div>
 
-      <div className="card-base flex flex-col items-center gap-4 p-6 text-center">
-        <Avatar src={record.photo_url} name={record.full_name} size="xl" />
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-            {record.full_name}
-          </h1>
-          {record.nickname && (
-            <p className="text-sm text-slate-500 dark:text-slate-400">«{record.nickname}»</p>
-          )}
+      <div className="card-base overflow-hidden">
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-[220px_1fr]">
+          <div className="flex flex-col items-center gap-4 border-b border-slate-100 bg-surface-card p-6 md:border-b-0 md:border-l">
+            <Avatar src={record.photo_url} name={record.full_name} size="xl" className="!h-48 !w-48 !rounded-xl !text-5xl" />
+          </div>
+          <div className="p-5">
+            <h1 className="mb-1 text-2xl font-bold text-brand-600">{record.full_name}</h1>
+            {record.nickname && <p className="mb-4 text-sm text-slate-500">اللقب: {record.nickname}</p>}
+            <div className="overflow-hidden rounded-lg border border-slate-100">
+              <DetailRow label="العمر" value={record.age != null ? String(record.age) : null} />
+              <DetailRow label="الجنس" value={record.gender ? GENDER_LABELS[record.gender] : null} />
+              <DetailRow label="المهنة" value={record.profession} />
+              <DetailRow label="السكن" value={record.address} />
+              <DetailRow label="العلامة الظاهرة" value={record.visible_marks} />
+              <DetailRow label="نوع الجريمة" value={record.crime_type} />
+              <DetailRow label="ملاحظات القضية" value={record.case_notes} />
+              <DetailRow label="ملاحظات إضافية" value={record.additional_notes} />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="card-base divide-y divide-slate-200 dark:divide-slate-800">
-        <DetailRow label="العمر" value={record.age != null ? String(record.age) : null} />
-        <DetailRow label="الجنس" value={record.gender ? GENDER_LABELS[record.gender] : null} />
-        <DetailRow label="المهنة" value={record.profession} />
-        <DetailRow label="العنوان" value={record.address} />
-        <DetailRow label="العلامات المميزة" value={record.visible_marks} />
-        <DetailRow label="نوع القضية" value={record.crime_type} />
-        <DetailRow label="ملاحظات القضية" value={record.case_notes} multiline />
-        <DetailRow label="ملاحظات إضافية" value={record.additional_notes} multiline />
-      </div>
-
-      <div className="card-base p-4 text-xs text-slate-500 dark:text-slate-400">
+      <div className="card-base p-4 text-xs text-slate-500">
         <p>أُنشئ في: {formatDateTime(record.created_at)}</p>
         <p>آخر تحديث: {formatDateTime(record.updated_at)}</p>
       </div>
@@ -102,26 +101,12 @@ export default function RecordDetailsPage() {
   );
 }
 
-function DetailRow({
-  label,
-  value,
-  multiline = false,
-}: {
-  label: string;
-  value: RecordRow[keyof RecordRow] | null;
-  multiline?: boolean;
-}) {
+function DetailRow({ label, value }: { label: string; value: RecordRow[keyof RecordRow] | null }) {
   const display = value === null || value === undefined || value === '' ? '—' : String(value);
   return (
-    <div className={multiline ? 'p-4' : 'flex items-center justify-between gap-4 p-4'}>
-      <span className="shrink-0 text-sm text-slate-500 dark:text-slate-400">{label}</span>
-      <span
-        className={`text-sm font-medium text-slate-800 dark:text-slate-100 ${
-          multiline ? 'mt-1 block whitespace-pre-wrap' : 'text-left'
-        }`}
-      >
-        {display}
-      </span>
+    <div className="info-table-row">
+      <span className="text-sm text-slate-500">{label}</span>
+      <span className="text-sm font-semibold text-charcoal">{display}</span>
     </div>
   );
 }

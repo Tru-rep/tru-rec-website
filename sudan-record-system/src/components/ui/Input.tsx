@@ -12,12 +12,12 @@ export function Field({ label, error, htmlFor, children }: FieldWrapperProps) {
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={htmlFor} className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+        <label htmlFor={htmlFor} className="block text-sm font-semibold text-charcoal">
           {label}
         </label>
       )}
       {children}
-      {error && <p className="text-xs text-red-600 dark:text-red-400">{error}</p>}
+      {error && <p className="text-xs text-red-600">{error}</p>}
     </div>
   );
 }

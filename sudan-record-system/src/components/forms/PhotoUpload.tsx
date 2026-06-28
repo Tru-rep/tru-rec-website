@@ -78,7 +78,7 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="rounded-xl bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700"
+          className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
         >
           📷 اختر صورة
         </button>
@@ -86,7 +86,7 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
           <button
             type="button"
             onClick={clear}
-            className="rounded-xl bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200"
+            className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-charcoal hover:bg-surface-card"
           >
             إزالة
           </button>

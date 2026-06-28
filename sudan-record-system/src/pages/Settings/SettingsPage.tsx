@@ -9,23 +9,23 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">الإعدادات</h1>
+      <h1 className="text-xl font-bold text-charcoal">الإعدادات</h1>
 
-      <section className="card-base divide-y divide-slate-200 dark:divide-slate-800">
+      <section className="card-base divide-y divide-slate-100">
         <div className="p-4">
-          <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200">الحساب</h2>
+          <h2 className="text-sm font-bold text-brand-600">الحساب</h2>
         </div>
         <Row label="البريد الإلكتروني" value={profile?.email ?? '—'} />
         <Row label="الاسم" value={profile?.full_name || '—'} />
         <Row label="الدور" value={profile ? ROLE_LABELS[profile.role] : '—'} />
       </section>
 
-      <section className="card-base divide-y divide-slate-200 dark:divide-slate-800">
+      <section className="card-base divide-y divide-slate-100">
         <div className="p-4">
-          <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200">المظهر</h2>
+          <h2 className="text-sm font-bold text-brand-600">المظهر</h2>
         </div>
         <div className="flex items-center justify-between p-4">
-          <span className="text-sm text-slate-600 dark:text-slate-300">الوضع الداكن</span>
+          <span className="text-sm text-slate-600">الوضع الداكن</span>
           <Button variant="secondary" size="sm" onClick={toggleTheme}>
             {theme === 'dark' ? 'مُفعّل' : 'مُعطّل'}
           </Button>
@@ -38,8 +38,8 @@ export default function SettingsPage() {
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between p-4 text-sm">
-      <span className="text-slate-500 dark:text-slate-400">{label}</span>
-      <span className="font-medium text-slate-800 dark:text-slate-100" dir="ltr">
+      <span className="text-slate-500">{label}</span>
+      <span className="font-semibold text-charcoal" dir="ltr">
         {value}
       </span>
     </div>

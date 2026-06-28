@@ -4,7 +4,6 @@ import { cn } from '@/utils/cn';
 import { getInitials } from '@/utils/format';
 
 interface AvatarProps {
-  /** Storage path, legacy public URL, or a ready-to-display http(s) URL (e.g. blob preview). */
   src?: string | null;
   name: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -18,7 +17,6 @@ const sizeMap = {
   xl: 'h-40 w-40 text-4xl',
 };
 
-/** Photo with graceful initials fallback when missing or failing to load. */
 export function Avatar({ src, name, size = 'md', className }: AvatarProps) {
   const [errored, setErrored] = useState(false);
   const isDirectUrl = Boolean(src && (src.startsWith('blob:') || src.startsWith('data:')));
@@ -29,7 +27,7 @@ export function Avatar({ src, name, size = 'md', className }: AvatarProps) {
   return (
     <div
       className={cn(
-        'flex shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-brand-100 font-semibold text-brand-700 dark:bg-brand-900/40 dark:text-brand-300',
+        'flex shrink-0 items-center justify-center overflow-hidden rounded-xl bg-brand-50 font-bold text-brand-700 ring-2 ring-brand-100',
         sizeMap[size],
         className,
       )}

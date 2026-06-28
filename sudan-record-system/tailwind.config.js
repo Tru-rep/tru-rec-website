@@ -6,20 +6,33 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+          50: '#fdf3f3',
+          100: '#f9e0e0',
+          200: '#f0bcbc',
+          300: '#e08a8a',
+          400: '#c94a4a',
+          500: '#a82828',
+          600: '#8B1E1E',
+          700: '#731818',
+          800: '#5c1313',
+          900: '#450e0e',
+        },
+        charcoal: {
+          DEFAULT: '#1c1c1c',
+          light: '#2a2a2a',
+          muted: '#3d3d3d',
+        },
+        surface: {
+          DEFAULT: '#ececec',
+          card: '#f5f5f5',
         },
       },
       fontFamily: {
         sans: ['Cairo', 'system-ui', 'Segoe UI', 'Tahoma', 'sans-serif'],
+      },
+      boxShadow: {
+        card: '0 2px 12px rgba(0, 0, 0, 0.08)',
+        'card-lg': '0 4px 20px rgba(0, 0, 0, 0.1)',
       },
     },
   },

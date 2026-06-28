@@ -12,7 +12,6 @@ export default function SearchPage() {
   const [page, setPage] = useState(1);
   const debounced = useDebounce(term, 350);
 
-  // Reset to first page whenever the search term changes.
   const search = debounced.trim();
   const query = useRecordsList({ page, pageSize: PAGE_SIZE, search });
 
@@ -26,20 +25,20 @@ export default function SearchPage() {
   return (
     <div className="space-y-5">
       <div>
-        <h1 className="text-xl font-bold text-slate-900 dark:text-slate-100">البحث في السجلات</h1>
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          ابحث بالاسم، اللقب، المهنة أو العنوان
-        </p>
+        <h1 className="text-xl font-bold text-charcoal">البحث في السجلات</h1>
+        <p className="text-sm text-slate-500">ابحث بالاسم، اللقب، المهنة أو العنوان</p>
       </div>
 
-      <div className="sticky top-[60px] z-20 -mx-4 bg-slate-50/80 px-4 py-2 backdrop-blur dark:bg-slate-950/80">
+      <div className="card-base flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
         <Input
           type="search"
           value={term}
           onChange={(e) => onTermChange(e.target.value)}
-          placeholder="🔍 اكتب للبحث..."
+          placeholder="اكتب اسم أو لقب للبحث..."
           autoFocus
+          className="flex-1"
         />
+        <Button className="w-full shrink-0 sm:w-auto">بحث</Button>
       </div>
 
       {query.isLoading ? (
@@ -48,10 +47,8 @@ export default function SearchPage() {
         <ErrorState onRetry={() => query.refetch()} />
       ) : query.data && query.data.items.length > 0 ? (
         <>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            {query.data.total} نتيجة
-          </p>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+          <p className="text-xs font-medium text-slate-500">{query.data.total} نتيجة</p>
+          <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
             {query.data.items.map((r) => (
               <RecordCard key={r.id} record={r} />
             ))}
@@ -67,7 +64,7 @@ export default function SearchPage() {
               >
                 السابق
               </Button>
-              <span className="text-sm text-slate-600 dark:text-slate-300">
+              <span className="text-sm text-slate-600">
                 {page} / {totalPages}
               </span>
               <Button

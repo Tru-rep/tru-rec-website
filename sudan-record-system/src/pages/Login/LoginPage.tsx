@@ -10,6 +10,7 @@ import { loginSchema, type LoginValues } from '@/lib/validation';
 import { Button } from '@/components/ui/Button';
 import { Field, Input } from '@/components/ui/Input';
 import { SetupBanner } from '@/components/common/SetupBanner';
+import { Logo } from '@/components/layout/Logo';
 import { paths } from '@/routes/paths';
 
 export default function LoginPage() {
@@ -63,21 +64,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200 p-4 dark:from-slate-950 dark:to-slate-900">
+    <div className="flex min-h-screen items-center justify-center bg-surface p-4">
       <div className="w-full max-w-md space-y-6">
-        <div className="text-center">
-          <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-600 text-3xl text-white shadow-lg">
-            📁
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4 rounded-2xl bg-charcoal px-6 py-5">
+            <Logo />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
-            نظام السجل الرقمي
-          </h1>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-            تسجيل الدخول للوصول إلى السجلات
-          </p>
+          <h1 className="text-2xl font-bold text-charcoal">تسجيل الدخول</h1>
+          <p className="mt-1 text-sm text-slate-500">للوصول إلى سجل الأشخاص</p>
         </div>
 
-        <div className="card-base space-y-5 p-6">
+        <div className="card-base space-y-5 p-6 shadow-card-lg">
           <SetupBanner />
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -105,8 +102,8 @@ export default function LoginPage() {
             )}
 
             {!forgotMode && (
-              <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                <input type="checkbox" className="h-4 w-4 rounded" {...register('remember')} />
+              <label className="flex items-center gap-2 text-sm text-slate-600">
+                <input type="checkbox" className="h-4 w-4 rounded accent-brand-600" {...register('remember')} />
                 تذكرني
               </label>
             )}
@@ -119,7 +116,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setForgotMode(false)}
-                  className="block w-full text-center text-sm text-brand-600 hover:underline dark:text-brand-400"
+                  className="block w-full text-center text-sm font-medium text-brand-600 hover:underline"
                 >
                   العودة لتسجيل الدخول
                 </button>
@@ -132,7 +129,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setForgotMode(true)}
-                  className="block w-full text-center text-sm text-brand-600 hover:underline dark:text-brand-400"
+                  className="block w-full text-center text-sm font-medium text-brand-600 hover:underline"
                 >
                   نسيت كلمة المرور؟
                 </button>
@@ -145,9 +142,8 @@ export default function LoginPage() {
   );
 }
 
-/** Map common Supabase auth errors to Arabic messages. */
 function translateAuthError(message: string): string {
-  if (/invalid login credentials/i.test(message)) return 'بيانات الدخول غير صحيحة';
+  if (/invalid login credentials/i.test(message)) return 'بيانات الدخول غير صالحة';
   if (/email not confirmed/i.test(message)) return 'لم يتم تأكيد البريد الإلكتروني بعد';
   return message;
 }
