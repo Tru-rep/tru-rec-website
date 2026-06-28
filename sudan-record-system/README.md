@@ -182,12 +182,9 @@ production builds.
 
 ## Deploy to Vercel
 
-1. Import the repo (root: `sudan-record-system`).
-2. Framework preset: **Vite**. Build: `npm run build`. Output: `dist`.
-3. Add env vars `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`,
+1. Import the repo **`Tru-rep/tru-rec-website`** on Vercel.
+2. **Either** leave **Root Directory** empty (repo root `vercel.json` builds `sudan-record-system` automatically) **or** set Root Directory to `sudan-record-system` and use the defaults there.
+3. Framework preset: **Vite**. Build: `npm run build`. Output: `dist`.
+4. Add env vars `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`,
    `VITE_SUPABASE_PHOTO_BUCKET` in Project Settings.
-4. Add a SPA rewrite (so client routes work):
-
-```json
-{ "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
-```
+5. SPA rewrites are in `vercel.json` (repo root and `sudan-record-system/`).
