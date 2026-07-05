@@ -98,6 +98,10 @@ export function RecordForm({
           </Field>
         </div>
 
+        <Field label="رقم البلاغ" htmlFor="report_number" error={errors.report_number?.message}>
+          <Input id="report_number" dir="ltr" placeholder="مثال: 2024-00123" {...register('report_number')} />
+        </Field>
+
         <Field label="نوع القضية" htmlFor="crime_type" error={errors.crime_type?.message}>
           <Input id="crime_type" {...register('crime_type')} />
         </Field>

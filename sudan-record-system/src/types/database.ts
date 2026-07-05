@@ -27,6 +27,7 @@ export interface RecordRow {
   visible_marks: string | null;
   case_notes: string | null;
   crime_type: string | null;
+  report_number: string | null;
   additional_notes: string | null;
   photo_url: string | null;
   created_by: string | null;

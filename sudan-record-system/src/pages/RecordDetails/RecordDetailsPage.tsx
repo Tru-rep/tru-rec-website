@@ -76,6 +76,7 @@ export default function RecordDetailsPage() {
               <DetailRow label="السكن" value={record.address} />
               <DetailRow label="العلامة الظاهرة" value={record.visible_marks} />
               <DetailRow label="نوع الجريمة" value={record.crime_type} />
+              <DetailRow label="رقم البلاغ" value={record.report_number} />
               <DetailRow label="ملاحظات القضية" value={record.case_notes} />
               <DetailRow label="ملاحظات إضافية" value={record.additional_notes} />
             </div>

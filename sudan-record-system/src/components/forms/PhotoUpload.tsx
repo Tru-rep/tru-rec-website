@@ -4,19 +4,14 @@ import { Avatar } from '@/components/common/Avatar';
 import { Spinner } from '@/components/ui/Spinner';
 
 interface PhotoUploadProps {
-  /** Existing photo URL (edit mode). */
   currentUrl?: string | null;
   name: string;
-  /** Called with the compressed file ready to upload, or null if cleared. */
   onFileSelected: (file: File | null) => void;
 }
 
-/**
- * Photo picker supporting camera + gallery, with client-side compression and
- * live preview before save. Emits a compressed File to the parent form.
- */
 export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const galleryRef = useRef<HTMLInputElement>(null);
+  const cameraRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(currentUrl ?? null);
   const [processing, setProcessing] = useState(false);
   const objectUrlRef = useRef<string | null>(null);
@@ -27,10 +22,7 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
     };
   }, []);
 
-  async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
+  async function handleFile(file: File) {
     setProcessing(true);
     try {
       const compressed = await compressImage(file);
@@ -44,6 +36,13 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
     }
   }
 
+  async function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    await handleFile(file);
+    e.target.value = '';
+  }
+
   function clear() {
     if (objectUrlRef.current) {
       URL.revokeObjectURL(objectUrlRef.current);
@@ -51,7 +50,8 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
     }
     setPreview(null);
     onFileSelected(null);
-    if (inputRef.current) inputRef.current.value = '';
+    if (galleryRef.current) galleryRef.current.value = '';
+    if (cameraRef.current) cameraRef.current.value = '';
   }
 
   return (
@@ -65,10 +65,16 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
         )}
       </div>
 
-      <div className="flex gap-2">
-        {/* capture="environment" prompts the camera on mobile devices. */}
+      <div className="flex flex-wrap justify-center gap-2">
         <input
-          ref={inputRef}
+          ref={galleryRef}
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleChange}
+        />
+        <input
+          ref={cameraRef}
           type="file"
           accept="image/*"
           capture="environment"
@@ -77,10 +83,17 @@ export function PhotoUpload({ currentUrl, name, onFileSelected }: PhotoUploadPro
         />
         <button
           type="button"
-          onClick={() => inputRef.current?.click()}
+          onClick={() => galleryRef.current?.click()}
           className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700"
         >
-          📷 اختر صورة
+          🖼️ من المعرض
+        </button>
+        <button
+          type="button"
+          onClick={() => cameraRef.current?.click()}
+          className="rounded-lg border border-brand-600 bg-white px-4 py-2 text-sm font-semibold text-brand-600 hover:bg-brand-50"
+        >
+          📷 التقاط صورة
         </button>
         {preview && (
           <button

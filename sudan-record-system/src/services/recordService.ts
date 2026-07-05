@@ -5,7 +5,7 @@ import type { Paginated, RecordInput, RecordRow, RecordSummary } from '@/types';
 /** Columns needed for list/search cards only (keeps payloads small). */
 const SUMMARY_COLUMNS = 'id, full_name, nickname, profession, photo_url, created_at';
 const FULL_COLUMNS =
-  'id, full_name, age, gender, address, profession, nickname, visible_marks, case_notes, crime_type, additional_notes, photo_url, created_by, created_at, updated_at';
+  'id, full_name, age, gender, address, profession, nickname, visible_marks, case_notes, crime_type, report_number, additional_notes, photo_url, created_by, created_at, updated_at';
 
 export interface ListParams {
   page?: number;
@@ -34,7 +34,7 @@ export const recordService = {
       // ilike across the most useful columns; backed by pg_trgm indexes.
       const pattern = `%${term}%`;
       query = query.or(
-        `full_name.ilike.${pattern},nickname.ilike.${pattern},profession.ilike.${pattern},address.ilike.${pattern}`,
+        `full_name.ilike.${pattern},nickname.ilike.${pattern},profession.ilike.${pattern},address.ilike.${pattern},report_number.ilike.${pattern}`,
       );
     }
 

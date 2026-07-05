@@ -20,6 +20,7 @@ export function toRecordInput(values: RecordFormValues): RecordInput {
     visible_marks: emptyToNull(values.visible_marks),
     case_notes: emptyToNull(values.case_notes),
     crime_type: emptyToNull(values.crime_type),
+    report_number: emptyToNull(values.report_number),
     additional_notes: emptyToNull(values.additional_notes),
     photo_url: emptyToNull(values.photo_url),
   };

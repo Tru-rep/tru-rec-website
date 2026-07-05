@@ -141,6 +141,7 @@ function ProfileShowcase({ record }: { record: RecordRow }) {
     { label: 'المهنة', value: record.profession, icon: '💼' },
     { label: 'العلامة الظاهرة', value: record.visible_marks, icon: '✋' },
     { label: 'نوع الجريمة', value: record.crime_type, icon: '⚖️' },
+    { label: 'رقم البلاغ', value: record.report_number, icon: '🔢' },
     { label: 'السلوك', value: record.case_notes, icon: '📋' },
   ];
 

@@ -40,6 +40,7 @@ export const recordSchema = z.object({
   visible_marks: z.string().max(1000).optional().nullable(),
   case_notes: z.string().max(5000).optional().nullable(),
   crime_type: z.string().max(200).optional().nullable(),
+  report_number: z.string().max(100).optional().nullable(),
   additional_notes: z.string().max(5000).optional().nullable(),
   photo_url: z.string().url().optional().nullable(),
 });

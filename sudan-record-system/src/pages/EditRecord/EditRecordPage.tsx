@@ -57,6 +57,7 @@ export default function EditRecordPage() {
     visible_marks: record.visible_marks,
     case_notes: record.case_notes,
     crime_type: record.crime_type,
+    report_number: record.report_number,
     additional_notes: record.additional_notes,
   };
 

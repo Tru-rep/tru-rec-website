@@ -137,6 +137,7 @@ npm run preview    # serve the production build
    - `supabase/migrations/0002_rls.sql` (row level security)
    - `supabase/migrations/0003_storage.sql` (private photo bucket + storage RLS)
    - `supabase/migrations/0004_security_hardening.sql` (role guard, `created_by`, private bucket)
+   - `supabase/migrations/0005_report_number.sql` (رقم البلاغ field)
 
    (Or with the CLI: `supabase db push`.)
 3. **Storage bucket** — `0003` creates the private `record-photos` bucket. Photos are
