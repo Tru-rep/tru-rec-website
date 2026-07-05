@@ -12,6 +12,7 @@ import { Field, Input } from '@/components/ui/Input';
 import { SetupBanner } from '@/components/common/SetupBanner';
 import { Logo } from '@/components/layout/Logo';
 import { paths } from '@/routes/paths';
+import { APP_NAME } from '@/utils/constants';
 
 export default function LoginPage() {
   const { isAuthenticated, loading, signIn } = useAuth();
@@ -71,7 +72,7 @@ export default function LoginPage() {
             <Logo />
           </div>
           <h1 className="text-2xl font-bold text-charcoal">تسجيل الدخول</h1>
-          <p className="mt-1 text-sm text-slate-500">للوصول إلى سجل الأشخاص</p>
+          <p className="mt-1 text-sm text-slate-500">للوصول إلى {APP_NAME}</p>
         </div>
 
         <div className="card-base space-y-5 p-6 shadow-card-lg">

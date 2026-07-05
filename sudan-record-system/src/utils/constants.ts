@@ -1,5 +1,8 @@
 import type { Gender, UserRole } from '@/types';
 
+export const APP_NAME = 'المرصد';
+export const APP_TAGLINE = 'نظام إدارة السجلات الآمن';
+
 export const PAGE_SIZE = 12;
 
 export const GENDER_OPTIONS: { value: Gender; label: string }[] = [

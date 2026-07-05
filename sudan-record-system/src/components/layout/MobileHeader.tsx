@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { paths } from '@/routes/paths';
+import { APP_NAME } from '@/utils/constants';
 
 /** Red mobile top bar matching the reference mockup. */
 export function MobileHeader() {
@@ -12,7 +13,7 @@ export function MobileHeader() {
           </svg>
         </button>
         <Link to={paths.dashboard} className="text-base font-bold">
-          سجل الأشخاص
+          {APP_NAME}
         </Link>
         <Link
           to={paths.settings}

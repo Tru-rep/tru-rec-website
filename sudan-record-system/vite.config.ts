@@ -14,11 +14,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'offline.html', 'icons/apple-touch-icon.png'],
+      includeAssets: ['favicon.png', 'offline.html', 'icons/apple-touch-icon.png'],
       manifest: {
-        name: 'سجل الأشخاص',
-        short_name: 'سجل الأشخاص',
-        description: 'Private, secure digital record system for managing person records.',
+        name: 'المرصد',
+        short_name: 'المرصد',
+        description: 'نظام إدارة السجلات الآمن — المرصد',
         theme_color: '#8B1E1E',
         background_color: '#ececec',
         display: 'standalone',
