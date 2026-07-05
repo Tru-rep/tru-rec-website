@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useRecentRecords, useRecord } from '@/hooks/useRecords';
 import { Avatar } from '@/components/common/Avatar';
+import { InstallBanner } from '@/components/common/InstallBanner';
 import { Button } from '@/components/ui/Button';
 import { FeatureCard } from '@/components/cards/FeatureCard';
 import { LoadingState, EmptyState, ErrorState } from '@/components/common/StateViews';
@@ -17,6 +18,8 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
+      <InstallBanner id="install-hint" />
+
       {/* Search bar */}
       <div className="card-base flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
         <input
@@ -124,6 +127,14 @@ export default function DashboardPage() {
           icon={<span className="text-xl">📱</span>}
           title="جميع الأجهزة"
           description="جوال وحاسوب"
+          onClick={() => {
+            const el = document.getElementById('install-hint');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              navigate(paths.settings);
+            }
+          }}
         />
       </section>
     </div>
@@ -142,7 +153,7 @@ function ProfileShowcase({ record }: { record: RecordRow }) {
     { label: 'العلامة الظاهرة', value: record.visible_marks, icon: '✋' },
     { label: 'نوع الجريمة', value: record.crime_type, icon: '⚖️' },
     { label: 'رقم البلاغ', value: record.report_number, icon: '🔢' },
-    { label: 'السلوك', value: record.case_notes, icon: '📋' },
+    { label: 'ملاحظات القضية', value: record.case_notes, icon: '📋' },
   ];
 
   return (

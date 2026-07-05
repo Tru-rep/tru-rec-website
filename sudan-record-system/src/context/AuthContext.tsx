@@ -10,7 +10,7 @@ interface AuthContextValue {
   loading: boolean;
   isAdmin: boolean;
   isAuthenticated: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
+  signIn: (email: string, password: string, options?: { remember?: boolean }) => Promise<void>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
 }
@@ -72,8 +72,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       loading,
       isAdmin: profile?.role === 'admin',
       isAuthenticated: Boolean(session),
-      async signIn(email, password) {
-        await authService.signIn(email, password);
+      async signIn(email, password, options) {
+        await authService.signIn(email, password, options);
       },
       async signOut() {
         await authService.signOut();

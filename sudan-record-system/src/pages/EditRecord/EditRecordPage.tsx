@@ -3,7 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@/context/ToastContext';
 import { useRecord, useUpdateRecord } from '@/hooks/useRecords';
 import { storageService } from '@/services/storageService';
+import { recordService } from '@/services/recordService';
 import { RecordForm } from '@/components/forms/RecordForm';
+import { ConfirmDialog } from '@/components/common/ConfirmDialog';
 import { LoadingState, ErrorState } from '@/components/common/StateViews';
 import { toRecordInput } from '@/utils/records';
 import type { RecordFormValues } from '@/lib/validation';
@@ -16,6 +18,9 @@ export default function EditRecordPage() {
   const recordQuery = useRecord(id);
   const updateRecord = useUpdateRecord();
   const [submitting, setSubmitting] = useState(false);
+  const [duplicate, setDuplicate] = useState<{ id: string; full_name: string } | null>(null);
+  const [pendingValues, setPendingValues] = useState<RecordFormValues | null>(null);
+  const [pendingPhoto, setPendingPhoto] = useState<File | null>(null);
 
   if (recordQuery.isLoading) return <LoadingState />;
   if (recordQuery.isError || !recordQuery.data)
@@ -23,7 +28,7 @@ export default function EditRecordPage() {
 
   const record = recordQuery.data;
 
-  async function handleSubmit(values: RecordFormValues, photoFile: File | null) {
+  async function saveRecord(values: RecordFormValues, photoFile: File | null) {
     if (!id) return;
     setSubmitting(true);
     try {
@@ -33,7 +38,6 @@ export default function EditRecordPage() {
         const url = await storageService.uploadPhoto(photoFile, id);
         input.photo_url = url;
       } else {
-        // Keep the existing photo if no new file was chosen.
         input.photo_url = record.photo_url;
       }
 
@@ -44,7 +48,29 @@ export default function EditRecordPage() {
       notify(err instanceof Error ? err.message : 'تعذر تحديث السجل', 'error');
     } finally {
       setSubmitting(false);
+      setPendingValues(null);
+      setPendingPhoto(null);
+      setDuplicate(null);
     }
+  }
+
+  async function handleSubmit(values: RecordFormValues, photoFile: File | null) {
+    const reportNumber = values.report_number?.trim();
+    if (reportNumber) {
+      try {
+        const existing = await recordService.findByReportNumber(reportNumber, id);
+        if (existing) {
+          setDuplicate(existing);
+          setPendingValues(values);
+          setPendingPhoto(photoFile);
+          return;
+        }
+      } catch (err) {
+        notify(err instanceof Error ? err.message : 'تعذر التحقق من رقم البلاغ', 'error');
+        return;
+      }
+    }
+    await saveRecord(values, photoFile);
   }
 
   const defaults: Partial<RecordFormValues> = {
@@ -80,6 +106,25 @@ export default function EditRecordPage() {
         submitLabel="حفظ التعديلات"
         onSubmit={handleSubmit}
         onCancel={() => navigate(-1)}
+      />
+
+      <ConfirmDialog
+        open={duplicate !== null}
+        title="رقم بلاغ مكرر"
+        message={
+          duplicate
+            ? `رقم البلاغ مستخدم بالفعل في سجل «${duplicate.full_name}». هل تريد المتابعة والحفظ على أي حال؟`
+            : ''
+        }
+        confirmLabel="متابعة الحفظ"
+        cancelLabel="إلغاء"
+        loading={submitting}
+        onConfirm={() => pendingValues && saveRecord(pendingValues, pendingPhoto)}
+        onCancel={() => {
+          setDuplicate(null);
+          setPendingValues(null);
+          setPendingPhoto(null);
+        }}
       />
     </div>
   );

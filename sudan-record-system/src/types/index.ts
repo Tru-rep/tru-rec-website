@@ -14,6 +14,7 @@ export interface RecordSummary {
   full_name: string;
   nickname: string | null;
   profession: string | null;
+  report_number: string | null;
   photo_url: string | null;
   created_at: string;
 }

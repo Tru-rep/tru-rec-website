@@ -3,7 +3,7 @@ import { z } from 'zod';
 /** Login form schema. */
 export const loginSchema = z.object({
   email: z.string().min(1, 'البريد الإلكتروني مطلوب').email('بريد إلكتروني غير صالح'),
-  password: z.string().min(6, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل'),
+  password: z.string().min(8, 'كلمة المرور يجب أن تكون 8 أحرف على الأقل'),
   remember: z.boolean().optional(),
 });
 export type LoginValues = z.infer<typeof loginSchema>;
@@ -17,7 +17,7 @@ export type ForgotPasswordValues = z.infer<typeof forgotPasswordSchema>;
 /** Set new password after email recovery link. */
 export const resetPasswordSchema = z
   .object({
-    password: z.string().min(6, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل'),
+    password: z.string().min(8, 'كلمة المرور يجب أن تكون 8 أحرف على الأقل'),
     confirm: z.string().min(1, 'أكد كلمة المرور'),
   })
   .refine((d) => d.password === d.confirm, {
@@ -49,7 +49,7 @@ export type RecordFormValues = z.infer<typeof recordSchema>;
 /** Admin "create user" schema. */
 export const createUserSchema = z.object({
   email: z.string().min(1, 'البريد الإلكتروني مطلوب').email('بريد إلكتروني غير صالح'),
-  password: z.string().min(6, 'كلمة المرور يجب أن تكون 6 أحرف على الأقل'),
+  password: z.string().min(8, 'كلمة المرور يجب أن تكون 8 أحرف على الأقل'),
   full_name: z.string().max(200).optional().nullable(),
   role: z.enum(['admin', 'staff']),
 });

@@ -3,7 +3,7 @@ import { PAGE_SIZE } from '@/utils/constants';
 import type { Paginated, RecordInput, RecordRow, RecordSummary } from '@/types';
 
 /** Columns needed for list/search cards only (keeps payloads small). */
-const SUMMARY_COLUMNS = 'id, full_name, nickname, profession, photo_url, created_at';
+const SUMMARY_COLUMNS = 'id, full_name, nickname, profession, report_number, photo_url, created_at';
 const FULL_COLUMNS =
   'id, full_name, age, gender, address, profession, nickname, visible_marks, case_notes, crime_type, report_number, additional_notes, photo_url, created_by, created_at, updated_at';
 
@@ -104,5 +104,26 @@ export const recordService = {
   async remove(id: string): Promise<void> {
     const { error } = await supabase.from('records').delete().eq('id', id);
     if (error) throw error;
+  },
+
+  /** Exact match on report_number for duplicate checks before save. */
+  async findByReportNumber(
+    reportNumber: string,
+    excludeId?: string,
+  ): Promise<{ id: string; full_name: string } | null> {
+    const trimmed = reportNumber.trim();
+    if (!trimmed) return null;
+
+    let query = supabase
+      .from('records')
+      .select('id, full_name')
+      .eq('report_number', trimmed)
+      .limit(1);
+
+    if (excludeId) query = query.neq('id', excludeId);
+
+    const { data, error } = await query.maybeSingle();
+    if (error) throw error;
+    return data as { id: string; full_name: string } | null;
   },
 };

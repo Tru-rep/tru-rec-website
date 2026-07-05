@@ -26,7 +26,7 @@ export default function SearchPage() {
     <div className="space-y-5">
       <div>
         <h1 className="text-xl font-bold text-charcoal">البحث في السجلات</h1>
-        <p className="text-sm text-slate-500">ابحث بالاسم، اللقب، المهنة أو العنوان</p>
+        <p className="text-sm text-slate-500">ابحث بالاسم، اللقب، المهنة، العنوان أو رقم البلاغ</p>
       </div>
 
       <div className="card-base flex flex-col gap-3 p-4 sm:flex-row sm:items-center">

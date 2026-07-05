@@ -22,7 +22,7 @@ export default defineConfig({
         theme_color: '#8B1E1E',
         background_color: '#ececec',
         display: 'standalone',
-        orientation: 'portrait',
+        orientation: 'any',
         start_url: '/',
         scope: '/',
         lang: 'ar',

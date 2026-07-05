@@ -40,7 +40,7 @@ export default function LoginPage() {
     }
     setSubmitting(true);
     try {
-      await signIn(values.email, values.password);
+      await signIn(values.email, values.password, { remember: values.remember ?? true });
       navigate(paths.dashboard, { replace: true });
     } catch (err) {
       notify(err instanceof Error ? translateAuthError(err.message) : 'فشل تسجيل الدخول', 'error');

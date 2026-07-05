@@ -19,3 +19,12 @@ export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey, {
     detectSessionInUrl: true,
   },
 });
+
+/** Switch session storage before sign-in so «تذكرني» uses localStorage vs sessionStorage. */
+export function configureAuthPersistence(remember: boolean) {
+  const storage = remember ? window.localStorage : window.sessionStorage;
+  const other = remember ? window.sessionStorage : window.localStorage;
+  const auth = supabase.auth as unknown as { storage: Storage; storageKey: string };
+  auth.storage = storage;
+  other.removeItem(auth.storageKey);
+}

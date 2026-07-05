@@ -1,5 +1,5 @@
 import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabaseClient';
+import { configureAuthPersistence, supabase } from '@/lib/supabaseClient';
 import type { Profile } from '@/types';
 
 /**
@@ -10,7 +10,9 @@ import type { Profile } from '@/types';
  * never touch the Supabase client directly.
  */
 export const authService = {
-  async signIn(email: string, password: string) {
+  async signIn(email: string, password: string, options?: { remember?: boolean }) {
+    const remember = options?.remember ?? true;
+    configureAuthPersistence(remember);
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
     return data;

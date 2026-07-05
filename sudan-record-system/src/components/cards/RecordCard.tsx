@@ -16,6 +16,11 @@ export function RecordCard({ record }: { record: RecordSummary }) {
         {record.nickname && (
           <p className="truncate text-xs text-slate-500">اللقب: {record.nickname}</p>
         )}
+        {record.report_number && (
+          <p className="truncate text-xs text-slate-500" dir="ltr">
+            رقم البلاغ: {record.report_number}
+          </p>
+        )}
         <p className="truncate text-xs text-slate-400">
           {record.profession || 'بدون مهنة'} · {formatDate(record.created_at)}
         </p>
