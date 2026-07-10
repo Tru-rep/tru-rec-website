@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
 import { useRecord, useDeleteRecord } from '@/hooks/useRecords';
 import { Avatar } from '@/components/common/Avatar';
@@ -15,7 +14,6 @@ import type { RecordRow } from '@/types';
 export default function RecordDetailsPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { isAdmin } = useAuth();
   const { notify } = useToast();
   const recordQuery = useRecord(id);
   const deleteRecord = useDeleteRecord();
@@ -53,11 +51,9 @@ export default function RecordDetailsPage() {
           <Button size="sm" variant="secondary" onClick={() => navigate(paths.editRecord(record.id))}>
             تعديل البيانات
           </Button>
-          {isAdmin && (
-            <Button size="sm" variant="danger" onClick={() => setConfirmOpen(true)}>
-              حذف السجل
-            </Button>
-          )}
+          <Button size="sm" variant="danger" onClick={() => setConfirmOpen(true)}>
+            حذف السجل
+          </Button>
         </div>
       </div>
 

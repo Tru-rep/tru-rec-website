@@ -83,7 +83,7 @@ sudan-record-system/
 | ------------------------- | :---: | :---: |
 | Login                     |  ✅   |  ✅   |
 | Add / edit / search / view records | ✅ | ✅ |
-| Delete records            |  ✅   |  ❌   |
+| Delete records            |  ✅   |  ✅   |
 | Manage users & roles      |  ✅   |  ❌   |
 | Manage settings           |  ✅   |  ✅ (own) |
 
@@ -138,6 +138,7 @@ npm run preview    # serve the production build
    - `supabase/migrations/0003_storage.sql` (private photo bucket + storage RLS)
    - `supabase/migrations/0004_security_hardening.sql` (role guard, `created_by`, private bucket)
    - `supabase/migrations/0005_report_number.sql` (رقم البلاغ field)
+   - `supabase/migrations/0006_staff_can_delete_records.sql` (staff can delete records + photos)
 
    (Or with the CLI: `supabase db push`.)
 3. **Storage bucket** — `0003` creates the private `record-photos` bucket. Photos are
