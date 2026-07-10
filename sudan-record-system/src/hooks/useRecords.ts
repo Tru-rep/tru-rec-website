@@ -71,8 +71,9 @@ export function useDeleteRecord() {
       await recordService.remove(id);
       if (photoUrl) await storageService.deletePhoto(photoUrl);
     },
-    onSuccess: () => {
-      void qc.invalidateQueries({ queryKey: recordKeys.all });
+    onSuccess: async (_data, { id }) => {
+      qc.removeQueries({ queryKey: recordKeys.detail(id) });
+      await qc.resetQueries({ queryKey: recordKeys.all });
     },
   });
 }

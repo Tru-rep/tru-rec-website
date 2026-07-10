@@ -102,8 +102,13 @@ export const recordService = {
   },
 
   async remove(id: string): Promise<void> {
-    const { error } = await supabase.from('records').delete().eq('id', id);
+    const { data, error } = await supabase.from('records').delete().eq('id', id).select('id');
     if (error) throw error;
+    if (!data?.length) {
+      throw new Error(
+        'لم يتم حذف السجل. تأكد من تشغيل migration 0006 في Supabase أو أن لديك صلاحية الحذف.',
+      );
+    }
   },
 
   /** Exact match on report_number for duplicate checks before save. */
