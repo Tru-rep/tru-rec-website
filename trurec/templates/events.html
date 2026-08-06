@@ -112,162 +112,48 @@ Boxing Events in Malaysia – Dates, Venues, Registration | TruBoxing
 </nav>
 
 
-<!-- EVENT FEATURE BLOCK #1 -->
-<section class="evm" aria-labelledby="evm-title">
+<!-- MAIN EVENT FEATURE -->
+<section class="evm" aria-labelledby="evm-title-main">
   <article class="evm-card">
     <!-- Poster -->
     <a class="evm-media"
-       href="https://www.instagram.com/f3strike?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+       href="https://forms.gle/Wddqp7RXCZ4WMKhj6"
        target="_blank" rel="noopener">
-      <img src="{{ url_for('static', filename='images/events/f32.jpg') }}"
-           alt="TRUBOXING VOLUME 2 poster" loading="lazy">
-      <span class="evm-tag">31 AUG 2025</span>
+      <img src="{{ url_for('static', filename='images/events/truboxingeps5.jpeg') }}"
+           alt="TruBoxing Episode 5 registration poster" loading="lazy">
+      <span class="evm-tag">22 AUG 2026</span>
     </a>
 
     <div class="evm-body">
-      <h2 id="evm-title" class="evm-title">F3 STRIKE: International Fight Combat</h2>
+      <h2 id="evm-title-main" class="evm-title">TruBoxing Episode 5</h2>
 
       <ul class="evm-meta">
-        <li>12 October 2025</li>
-        <li>Dewan Beringin, Gombak!</li>
-        <li>Registration RM80</li>
+        <li>22 August 2026</li>
+        <li>The Spine, Kelana Jaya</li>
+        <li>Registration Fee: RM40</li>
       </ul>
 
       <p class="evm-desc">
-        🔥 ARE YOU READY TO STRIKE? 🔥<br><br>
-        💥 REGISTRATION IS NOW OPEN!<br>
-        Think you’ve got what it takes? Step into the ring and prove it.<br><br>
-
-        🚨 MMA Fighters — Register NOW!<br>
-        This event also serves as the official audition for ONE PRIDE MMA selection
-        happening on the same day! Don’t miss your chance to be scouted.<br><br>
-
-        ⚔ Fighters from all styles. One night. One shot.<br><br>
-
-        📲 Register now before it’s too late!
+        THE WAIT IS OVER. REGISTRATION IS NOW OPEN!<br><br>
+        Think you have what it takes?<br><br>
+        TruBoxing Episode 5 is not just a sparring session — it's a selection event. Stand out, perform,
+        and you could earn your place on future TruBoxing fight cards.<br><br>
+        Every champion starts somewhere. This is your opportunity to show your skills, heart,
+        and determination in front of the TruBoxing team.<br><br>
+        👊 Open Categories: Adult, Youth, Kids<br>
+        ⚠️ Limited slots only. Once registration is full, it will be closed.
       </p>
 
       <div class="evm-actions">
         <a class="evm-btn evm-primary"
-           href="https://forms.gle/oVYkaA17eXA1oLyC9"
+           href="https://forms.gle/Wddqp7RXCZ4WMKhj6"
            target="_blank" rel="noopener">Register Now</a>
         <a class="evm-btn evm-ghost"
-           href="https://www.instagram.com/f3strike?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-           target="_blank" rel="noopener">Event Details</a>
+           href="{{ url_for('home') }}#top"
+           target="_self" rel="noopener">Back to Home</a>
       </div>
     </div>
   </article>
-</section>
-
-
-<!-- EVENT FEATURE BLOCK #2 -->
-<section class="evm" aria-labelledby="evm-title-tfk">
-  <article class="evm-card">
-    <!-- Poster -->
-    <a class="evm-media"
-       href="https://www.instagram.com/tfkchampionships?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-       target="_blank" rel="noopener">
-      <img
-        src="{{ url_for('static', filename='images/events/TFK.jpg') }}"
-        alt="The Fighting Kingdom (TFK) – Season 1: Join The Fight poster"
-        loading="lazy">
-      <span class="evm-tag">13 SEP 2025</span>
-    </a>
-
-    <!-- Body -->
-    <div class="evm-body">
-      <h2 id="evm-title-tfk" class="evm-title">
-        The Fighting Kingdom (TFK) – Season 1: JOIN THE FIGHT
-      </h2>
-
-      <ul class="evm-meta">
-        <li>Sat, 13 Sep 2025</li>
-        <li>Star Avenue Lifestyle Mall</li>
-        <li>Registration RM50</li>
-        <li>Powered by TFK × Malaysia Beatdown</li>
-      </ul>
-
-      <p class="evm-desc">
-        Rasa kau ada skill? Masuk gelanggang &amp; tunjuk kau punya power 🔥
-        Slot limited bro — cepat before penuh!
-      </p>
-
-      <div class="evm-actions">
-        <a class="evm-btn evm-primary"
-           href="https://docs.google.com/forms/d/e/1FAIpQLSfLS7wJKIOQq5C62rJ-ziOl5hAg-oHuGdL9rIQ7xvTEqp8N5Q/viewform"
-           target="_blank" rel="noopener">Register Now</a>
-        <a class="evm-btn evm-ghost"
-           href="https://www.instagram.com/tfkchampionships?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-           target="_blank" rel="noopener">Event Details</a>
-      </div>
-    </div>
-  </article>
-</section>
-
-
-<!-- MORE EVENTS GRID -->
-<section class="events-wrap">
-  <h2 class="section-title">Upcoming Championship Fights</h2>
-
-  <div class="events-grid" id="eventsGrid">
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Truboxing%20-%20Vol%202%27%20on%20August%2031%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/Teaser.png') }}" alt="Truboxing - Vol 2">
-      <div class="event-date">August 31</div>
-      <h4 class="event-org">Truboxing - Vol 2</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27The%20Fighting%20Kingdom%27%20on%20September%2013%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/TFK.jpg') }}" alt="The Fighting Kingdom">
-      <div class="event-date">September 13</div>
-      <h4 class="event-org">The Fighting Kingdom</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27MFL%27%20on%20September%2006%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/MFL.png') }}" alt="MFL">
-      <div class="event-date">September 06</div>
-      <h4 class="event-org">MFL</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Ultimate%20Beatdown%27%20on%20September%2006%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/ultbd.png') }}" alt="Ultimate Beatdown">
-      <div class="event-date">September 06</div>
-      <h4 class="event-org">Ultimate Beatdown</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Truboxing%20-%20Special%20Series%27%20on%20September%2013%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/truss.png') }}" alt="Truboxing - Special Series">
-      <div class="event-date">Postponed</div>
-      <h4 class="event-org">Truboxing - Special Series</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27F3%20STRIKE:%20International%20Fight%20Combat%27%20on%20September%2013%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/f32.jpg') }}" alt="F3 STRIKE: International Fight Combat">
-      <div class="event-date">September 13</div>
-      <h4 class="event-org">F3 STRIKE: International Fight Combat</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Johor%20Combat%20Series%27%20on%20October%2004%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/poster2.jpg') }}" alt="Johor Combat Series">
-      <div class="event-date">October 04</div>
-      <h4 class="event-org">Johor Combat Series</h4>
-    </a>
-
-    <a class="event-card" target="_blank" rel="noopener"
-       href="https://api.whatsapp.com/send?phone=601118808511&text=Hi%20TruBoxing!%20I%27m%20interested%20in%20%27Penang%20Fight%20Night%27%20on%20November%2022%2C%202025.%20Please%20share%20details%2Fregistration.">
-      <img src="{{ url_for('static', filename='images/events/poster2.jpg') }}" alt="Penang Fight Night">
-      <div class="event-date">November 22</div>
-      <h4 class="event-org">Penang Fight Night</h4>
-    </a>
-
-  </div>
 </section>
 
 
